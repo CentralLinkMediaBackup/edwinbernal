@@ -99,13 +99,40 @@ const BadgesSection = () => {
           </div>
         </motion.div>
 
-        {/* Publication */}
+        {/* Featured Press */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12 max-w-2xl mx-auto"
+        >
+          <a 
+            href="https://www.etamu.edu/news/transforming-lives-through-leadership-edwin-zack-bernals-path-of-purpose-and-perseverance/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-card-hover p-6 text-center block hover:border-primary/50 transition-colors"
+          >
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <GraduationCap className="h-6 w-6 text-primary" />
+              <span className="badge-blue">Featured in ETAMU News</span>
+            </div>
+            <p className="text-foreground font-medium">
+              "Transforming Lives Through Leadership: Edwin Zack Bernal's Path of Purpose and Perseverance"
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              East Texas A&M University Official News →
+            </p>
+          </a>
+        </motion.div>
+
+        {/* Publication */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-6 max-w-2xl mx-auto"
         >
           <div className="glass-card-hover p-6 text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
