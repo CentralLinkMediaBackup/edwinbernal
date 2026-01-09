@@ -53,7 +53,7 @@ const VenturesSection = () => {
             </p>
 
             {/* Metrics */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="glass-card p-4 text-center">
                 <div className="flex items-center justify-center mb-2">
                   <Users className="h-5 w-5 text-primary mr-2" />
