@@ -26,7 +26,7 @@ const HeroSection = () => {
                 <img 
                   src={edwinProfile} 
                   alt="Edwin Bernal" 
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[center_35%]"
                 />
               </div>
               <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
