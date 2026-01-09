@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Briefcase, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TechTicker from "./TechTicker";
-import edwinProfile from "@/assets/edwin-profile.jpeg";
+import edwinProfile from "@/assets/edwin-profile.png";
 
 const HeroSection = () => {
   return (

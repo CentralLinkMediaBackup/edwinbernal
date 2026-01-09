@@ -107,7 +107,7 @@ const Footer = () => {
             className="flex justify-center gap-4 mb-12"
           >
             <a
-              href="https://linkedin.com/in/edwinbernal"
+              href="https://www.linkedin.com/in/edwinbernalz"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-primary/10 transition-colors group"
@@ -115,7 +115,7 @@ const Footer = () => {
               <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://instagram.com/edwinbernal.tx"
+              href="https://www.instagram.com/edwinbernal.tx/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-secondary/10 transition-colors group"
