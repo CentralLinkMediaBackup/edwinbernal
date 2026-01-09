@@ -29,8 +29,9 @@ const HeroSection = () => {
                   className="w-full h-full object-cover object-[center_35%]"
                 />
               </div>
-              <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm text-center leading-tight">Company<br/>Owner</span>
+              <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-xl flex flex-col items-center justify-center gap-0.5">
+                <span className="font-display text-primary-foreground font-bold text-lg leading-none">EB</span>
+                <span className="text-primary-foreground font-bold text-[10px] text-center leading-tight">Company<br/>Owner</span>
               </div>
             </motion.div>
 
