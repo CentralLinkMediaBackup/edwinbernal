@@ -12,7 +12,7 @@ const HeroSection = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
 
-      <div className="container relative z-10 px-6 py-20">
+      <div className="container relative z-10 px-6 pt-24 md:pt-20 py-20">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Profile Image */}
