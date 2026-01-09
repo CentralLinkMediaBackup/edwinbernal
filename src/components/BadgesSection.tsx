@@ -16,7 +16,7 @@ const badges = [
 
 const honorsAwards = [
   { title: "Best Lite Award", subtitle: "3 Consecutive Years" },
-  { title: "Congressional Recognition", subtitle: "Presented by Judge Carl Ginsberg" },
+  { title: "Congressional Recognition", subtitle: "Presented by Jasmine Crockett (U.S. Representative)" },
   { title: "ESUME Entrepreneur Scholarship", subtitle: "Scholarship Recipient" },
 ];
 
