@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Briefcase, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TechTicker from "./TechTicker";
+import edwinProfile from "@/assets/edwin-profile.jpeg";
 
 const HeroSection = () => {
   return (
@@ -12,37 +13,57 @@ const HeroSection = () => {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
 
       <div className="container relative z-10 px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 badge-blue mb-8"
-          >
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            First-Generation Student & Entrepreneur
-          </motion.div>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative flex-shrink-0"
+            >
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-primary/30 shadow-2xl glow-blue">
+                <img 
+                  src={edwinProfile} 
+                  alt="Edwin Bernal" 
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm text-center leading-tight">Company<br/>Owner</span>
+              </div>
+            </motion.div>
 
-          {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-5xl md:text-7xl font-bold mb-4 leading-tight"
-          >
-            <span className="text-foreground">Edwin Bernal</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-2xl md:text-3xl font-light mb-6"
-          >
-            <span className="text-gradient-gold">Corporate Attorney</span>
-            <span className="text-muted-foreground mx-3">|</span>
-            <span className="text-gradient-blue">Entrepreneur</span>
-          </motion.p>
+            {/* Text Content */}
+            <div className="text-center lg:text-left flex-1">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 badge-blue mb-6"
+              >
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                First-Generation Student & Entrepreneur
+              </motion.div>
+
+              {/* Main Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-display text-5xl md:text-7xl font-bold mb-4 leading-tight"
+              >
+                <span className="text-foreground">Edwin Bernal</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="text-2xl md:text-3xl font-light mb-6"
+              >
+                <span className="text-gradient-gold">Company Owner</span>
+              </motion.p>
 
           {/* Sub-headline */}
           <motion.p
@@ -77,13 +98,13 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-          >
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+              >
             <Button
               size="lg"
               className="group bg-gradient-to-r from-primary to-electric-glow hover:opacity-90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl glow-blue"
@@ -104,14 +125,16 @@ const HeroSection = () => {
             </Button>
           </motion.div>
 
-          {/* Tech Stack Ticker */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <TechTicker />
-          </motion.div>
+              {/* Tech Stack Ticker */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <TechTicker />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
 
