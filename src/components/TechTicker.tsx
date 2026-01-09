@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 import { Target, TrendingUp, Users, Code, FileSpreadsheet, Globe, Palette, BarChart3, Megaphone } from "lucide-react";
 
 const skills = [
-  { name: "Strategic Planning", icon: Target },
-  { name: "Business Development", icon: TrendingUp },
-  { name: "Executive Management", icon: Users },
+  { name: "Strategy", icon: Target },
+  { name: "Business Dev", icon: TrendingUp },
+  { name: "Executive Mgmt", icon: Users },
   { name: "Web Design", icon: Code },
   { name: "SEO", icon: BarChart3 },
-  { name: "Digital Analytics", icon: BarChart3 },
-  { name: "Social Media Management", icon: Megaphone },
-  { name: "Brand Development", icon: Palette },
-  { name: "Microsoft Office Suite", icon: FileSpreadsheet },
-  { name: "Google Platforms", icon: Globe },
+  { name: "Analytics", icon: BarChart3 },
+  { name: "Social Media", icon: Megaphone },
+  { name: "Branding", icon: Palette },
+  { name: "MS Office", icon: FileSpreadsheet },
+  { name: "Google Suite", icon: Globe },
   { name: "Java", icon: Code },
   { name: "HTML", icon: Code },
 ];
@@ -39,9 +39,9 @@ const TechTicker = () => {
           {[...skills, ...skills].map((skill, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-6 py-3 glass-card whitespace-nowrap"
+              className="flex items-center gap-3 px-5 py-3 glass-card whitespace-nowrap flex-shrink-0"
             >
-              <skill.icon className="h-5 w-5 text-primary" />
+              <skill.icon className="h-5 w-5 text-primary flex-shrink-0" />
               <span className="text-sm font-medium text-foreground">{skill.name}</span>
             </div>
           ))}

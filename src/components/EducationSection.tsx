@@ -46,7 +46,7 @@ const EducationSection = () => {
                 <h3 className="font-display text-lg font-bold text-foreground">
                   East Texas A&M University
                 </h3>
-                <p className="text-primary text-sm">Aug 2024 - May 2027</p>
+                <p className="text-primary text-sm">Aug 2024 - May 2025</p>
               </div>
             </div>
             

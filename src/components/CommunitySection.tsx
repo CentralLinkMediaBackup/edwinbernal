@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Clock, Users, Gift } from "lucide-react";
+import { Heart, Clock, Users, Gift, Star } from "lucide-react";
 
 const CommunitySection = () => {
   return (
@@ -24,7 +24,7 @@ const CommunitySection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Light Program */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -82,21 +82,59 @@ const CommunitySection = () => {
                 </h3>
               </div>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <p className="text-muted-foreground text-sm">
-                    Assisted with informational drives on Sundays, helping community 
-                    members access vital resources
-                  </p>
+              <div className="glass-card p-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <Clock className="h-6 w-6 text-secondary" />
+                  <div>
+                    <span className="text-4xl font-bold text-gradient-blue">147</span>
+                    <span className="text-muted-foreground ml-2">hours</span>
+                  </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Gift className="h-5 w-5 text-secondary flex-shrink-0" />
-                  <p className="text-muted-foreground text-sm">
-                    Volunteered during Christmas and Thanksgiving, helping feed 
-                    homeless and low-income families
-                  </p>
+              </div>
+              
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Assisted with informational drives on Sundays, helping community 
+                members access vital resources and citizenship information.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Future Leaders of America */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="glass-card-hover p-8 relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-[60px]" />
+            
+            <div className="relative">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-secondary/10">
+                  <Star className="h-8 w-8 text-secondary" />
                 </div>
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  Future Leaders of America
+                </h3>
+              </div>
+              
+              <div className="glass-card p-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <Clock className="h-6 w-6 text-primary" />
+                  <div>
+                    <span className="text-4xl font-bold text-gradient-gold">35+</span>
+                    <span className="text-muted-foreground ml-2">hours</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <Gift className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" />
+                <p className="text-muted-foreground text-sm">
+                  Volunteered during Christmas and Thanksgiving, helping feed 
+                  homeless and low-income families.
+                </p>
               </div>
             </div>
           </motion.div>
