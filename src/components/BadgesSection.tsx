@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, Users, Scale, Globe, Mic, Building, Star, GraduationCap, TrendingUp, Crown } from "lucide-react";
+import { Award, Users, Scale, Globe, Mic, Building, Star, GraduationCap, TrendingUp, Crown, Heart, BookOpen } from "lucide-react";
 
 const badges = [
   { title: "Mock Trial President", subtitle: "ETAMU", icon: Scale },
@@ -8,10 +8,16 @@ const badges = [
   { title: "Moot Court President", subtitle: "ETAMU", icon: Scale },
   { title: "College of Business Senator", subtitle: "Student Government", icon: Building },
   { title: "Pi Sigma Alpha Honor Society", subtitle: "Member & Leader", icon: Award },
-  { title: "Future Leaders of America", subtitle: "Member", icon: Star },
+  { title: "Sigma Chi Fraternity", subtitle: "ΣΧ Brother", icon: Users },
   { title: "ETAMU Lion Ambassador", subtitle: "Campus Representative", icon: Crown },
-  { title: "Sales Closer", subtitle: "Campus & Microsoft", icon: TrendingUp },
-  { title: "Project Transformation", subtitle: "Leader", icon: Users },
+  { title: "Future Leaders of America", subtitle: "Member", icon: Star },
+  { title: "Project Transformation", subtitle: "Best Lite (3x Winner)", icon: Heart },
+];
+
+const honorsAwards = [
+  { title: "Best Lite Award", subtitle: "3 Consecutive Years" },
+  { title: "Congressional Recognition", subtitle: "Special Honor" },
+  { title: "ESUME Entrepreneur Scholarship", subtitle: "Scholarship Recipient" },
 ];
 
 const BadgesSection = () => {
@@ -64,7 +70,55 @@ const BadgesSection = () => {
           ))}
         </div>
 
-        {/* Marquee Effect for Mobile - Alternative View */}
+        {/* Honors & Awards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 max-w-4xl mx-auto"
+        >
+          <h3 className="text-center font-display text-2xl font-bold mb-8">
+            Honors & <span className="text-gradient-blue">Awards</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {honorsAwards.map((award, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                className="glass-card p-6 text-center"
+              >
+                <Award className="h-8 w-8 text-secondary mx-auto mb-3" />
+                <h4 className="font-display font-bold text-foreground mb-1">{award.title}</h4>
+                <p className="text-sm text-muted-foreground">{award.subtitle}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Publication */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 max-w-2xl mx-auto"
+        >
+          <div className="glass-card-hover p-6 text-center">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <BookOpen className="h-6 w-6 text-primary" />
+              <span className="badge-blue">Publication</span>
+            </div>
+            <p className="text-foreground font-medium italic">
+              "Poison or Cure? Comparison Among Students and its effect on Mental Health"
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Marquee Effect */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

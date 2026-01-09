@@ -45,9 +45,11 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl text-muted-foreground mb-6 font-light"
           >
-            Finance & Political Science Major at East Texas A&M University
+            A&M Alumni | Project Manager, Prosperity Fire Protection, LLC
             <br />
-            <span className="text-primary">Founder of Central Link Media</span>
+            <span className="text-primary">Founder, Central Link Media, LLC</span>
+            <span className="text-muted-foreground mx-2">|</span>
+            <span className="text-secondary">50k+ Followers on Instagram</span>
           </motion.p>
 
           {/* Bio Blurb */}
@@ -58,12 +60,14 @@ const HeroSection = () => {
             className="glass-card p-6 mb-10 max-w-3xl mx-auto"
           >
             <p className="text-muted-foreground leading-relaxed">
-              I am a 20-year-old First-Generation student with high goals. A graduate of the{" "}
+              I am a driven leader, strategist, and entrepreneur currently pursuing a double major in{" "}
+              <span className="text-primary font-medium">Finance</span> and{" "}
+              <span className="text-primary font-medium">Political Science</span> with minors in{" "}
+              <span className="text-secondary font-medium">Legal Studies</span> and{" "}
+              <span className="text-secondary font-medium">Elementary Education</span>. A graduate of the{" "}
               <span className="text-secondary font-medium">Judge Barefoot Sanders Law Magnet</span>{" "}
-              (ranked #85 nationwide), I am the first in my family to finish high school and graduate
-              from such a selective program. My goal is to become a{" "}
-              <span className="text-primary font-medium">corporate attorney</span> and eventually a{" "}
-              <span className="text-secondary font-medium">State Representative</span>.
+              (ranked #85 nationwide), my academic foundation in business, law, and governance strengthens 
+              my work as a founder and future <span className="text-primary font-medium">corporate attorney</span>.
             </p>
           </motion.div>
 

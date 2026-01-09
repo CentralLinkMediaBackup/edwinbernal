@@ -1,37 +1,51 @@
-import { Code, FileSpreadsheet, Globe, Terminal } from "lucide-react";
+import { motion } from "framer-motion";
+import { Target, TrendingUp, Users, Code, FileSpreadsheet, Globe, Palette, BarChart3, Megaphone } from "lucide-react";
 
 const skills = [
-  { name: "Java", icon: Terminal },
-  { name: "HTML", icon: Code },
+  { name: "Strategic Planning", icon: Target },
+  { name: "Business Development", icon: TrendingUp },
+  { name: "Executive Management", icon: Users },
+  { name: "Web Design", icon: Code },
+  { name: "SEO", icon: BarChart3 },
+  { name: "Digital Analytics", icon: BarChart3 },
+  { name: "Social Media Management", icon: Megaphone },
+  { name: "Brand Development", icon: Palette },
   { name: "Microsoft Office Suite", icon: FileSpreadsheet },
   { name: "Google Platforms", icon: Globe },
-  { name: "Legal Secretary Work", icon: FileSpreadsheet },
-  { name: "Finance & Marketing", icon: Terminal },
-  { name: "Teaching Expertise", icon: Globe },
+  { name: "Java", icon: Code },
+  { name: "HTML", icon: Code },
 ];
 
 const TechTicker = () => {
   return (
-    <div className="w-full overflow-hidden py-4">
-      <p className="text-center text-sm text-muted-foreground mb-4 uppercase tracking-widest">
-        Technical Skills & Expertise
-      </p>
-      <div className="relative">
-        {/* Gradient Masks */}
+    <div className="relative">
+      <div className="text-center mb-6">
+        <span className="text-sm text-muted-foreground uppercase tracking-wider">
+          Core Competencies
+        </span>
+      </div>
+      
+      <div className="relative overflow-hidden">
+        {/* Gradient overlays */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
         
-        <div className="flex ticker-scroll">
+        <motion.div
+          className="flex gap-6 ticker-scroll"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
           {[...skills, ...skills].map((skill, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-6 py-3 mx-2 glass-card whitespace-nowrap"
+              className="flex items-center gap-3 px-6 py-3 glass-card whitespace-nowrap"
             >
               <skill.icon className="h-5 w-5 text-primary" />
-              <span className="text-foreground font-medium">{skill.name}</span>
+              <span className="text-sm font-medium text-foreground">{skill.name}</span>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
