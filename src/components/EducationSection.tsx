@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Languages, BookOpen, Scale } from "lucide-react";
+import { GraduationCap, Award, Languages, BookOpen, Scale, Shield, Heart, Briefcase } from "lucide-react";
+
+const certifications = [
+  { name: "Investment Risk Management", color: "primary" },
+  { name: "Bartender/Waiter Alcohol Permit", color: "secondary" },
+  { name: "CPR/AED/First Aid", color: "primary" },
+  { name: "Microsoft Excel", color: "secondary" },
+  { name: "Food Handling", color: "primary" },
+  { name: "Business Management", color: "secondary" },
+];
 
 const EducationSection = () => {
   return (
@@ -20,8 +29,8 @@ const EducationSection = () => {
           </h2>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* University */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* East Texas A&M University */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,10 +43,10 @@ const EducationSection = () => {
                 <GraduationCap className="h-8 w-8 text-primary" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-foreground">
+                <h3 className="font-display text-lg font-bold text-foreground">
                   East Texas A&M University
                 </h3>
-                <p className="text-primary text-sm">2024 - Present</p>
+                <p className="text-primary text-sm">Aug 2024 - May 2027</p>
               </div>
             </div>
             
@@ -45,12 +54,50 @@ const EducationSection = () => {
               <div className="flex items-start gap-3">
                 <BookOpen className="h-5 w-5 text-secondary mt-0.5" />
                 <div>
-                  <p className="text-foreground font-medium">Major</p>
-                  <p className="text-muted-foreground text-sm">Finance (Sales) & Political Science</p>
+                  <p className="text-foreground font-medium">Double Major</p>
+                  <p className="text-muted-foreground text-sm">Finance & Political Science (BBA)</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Scale className="h-5 w-5 text-primary mt-0.5" />
+                <div>
+                  <p className="text-foreground font-medium">Minor</p>
+                  <p className="text-muted-foreground text-sm">Legal Studies & Elementary Education</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* University of North Texas */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="glass-card-hover p-8"
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 rounded-xl bg-secondary/10 glow-gold">
+                <GraduationCap className="h-8 w-8 text-secondary" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold text-foreground">
+                  University of North Texas
+                </h3>
+                <p className="text-secondary text-sm">Aug 2025 - May 2027 (Online)</p>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <BookOpen className="h-5 w-5 text-primary mt-0.5" />
+                <div>
+                  <p className="text-foreground font-medium">Major</p>
+                  <p className="text-muted-foreground text-sm">Finance & Political Science</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Briefcase className="h-5 w-5 text-secondary mt-0.5" />
                 <div>
                   <p className="text-foreground font-medium">Minor</p>
                   <p className="text-muted-foreground text-sm">Legal Studies & Elementary Education</p>
@@ -72,7 +119,7 @@ const EducationSection = () => {
                 <Award className="h-8 w-8 text-secondary" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-foreground">
+                <h3 className="font-display text-lg font-bold text-foreground">
                   Judge Barefoot Sanders Law Magnet
                 </h3>
                 <p className="text-secondary text-sm">Dallas, TX • 2021 - 2024</p>
@@ -96,11 +143,11 @@ const EducationSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="glass-card-hover p-8"
+            className="glass-card-hover p-8 lg:col-span-2"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 rounded-xl bg-primary/10">
-                <Award className="h-8 w-8 text-primary" />
+                <Shield className="h-8 w-8 text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground">
                 Certifications
@@ -108,8 +155,14 @@ const EducationSection = () => {
             </div>
             
             <div className="flex flex-wrap gap-3">
-              <span className="badge-blue">Food Handling</span>
-              <span className="badge-gold">Business Management</span>
+              {certifications.map((cert, index) => (
+                <span 
+                  key={index}
+                  className={cert.color === "primary" ? "badge-blue" : "badge-gold"}
+                >
+                  {cert.name}
+                </span>
+              ))}
             </div>
           </motion.div>
 
@@ -134,7 +187,7 @@ const EducationSection = () => {
               <div>
                 <div className="flex justify-between mb-1">
                   <span className="text-foreground font-medium">English</span>
-                  <span className="text-secondary text-sm">Native</span>
+                  <span className="text-secondary text-sm">Native / Bilingual</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
                   <div className="h-full w-full bg-gradient-to-r from-primary to-secondary rounded-full" />
@@ -143,19 +196,10 @@ const EducationSection = () => {
               <div>
                 <div className="flex justify-between mb-1">
                   <span className="text-foreground font-medium">Spanish</span>
-                  <span className="text-secondary text-sm">Native</span>
+                  <span className="text-secondary text-sm">Native / Bilingual</span>
                 </div>
                 <div className="h-2 bg-muted rounded-full overflow-hidden">
                   <div className="h-full w-full bg-gradient-to-r from-primary to-secondary rounded-full" />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-foreground font-medium">French</span>
-                  <span className="text-primary text-sm">Beginner</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full w-1/4 bg-gradient-to-r from-primary to-electric-glow rounded-full" />
                 </div>
               </div>
             </div>

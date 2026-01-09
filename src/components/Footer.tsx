@@ -73,7 +73,7 @@ const Footer = () => {
                 <MapPin className="h-6 w-6 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground mb-1">Location</p>
-              <p className="text-foreground font-medium text-sm">990 Singleton Blvd, Dallas TX 75212</p>
+              <p className="text-foreground font-medium text-sm">Dallas, TX 75212</p>
             </motion.div>
           </div>
 
@@ -86,7 +86,7 @@ const Footer = () => {
             className="flex justify-center gap-4 mb-12"
           >
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/edwinbernal"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-primary/10 transition-colors group"
@@ -94,7 +94,7 @@ const Footer = () => {
               <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/edwinbernal.tx"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-secondary/10 transition-colors group"
