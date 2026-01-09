@@ -18,14 +18,14 @@ const skills = [
 
 const TechTicker = () => {
   return (
-    <div className="relative">
+    <div className="absolute left-0 right-0 -mx-6 lg:-mx-[calc(50vw-50%)]">
       <div className="text-center mb-6">
         <span className="text-sm text-muted-foreground uppercase tracking-wider">
           Core Competencies
         </span>
       </div>
       
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden w-screen">
         {/* Gradient overlays */}
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
