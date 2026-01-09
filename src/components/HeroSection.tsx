@@ -44,7 +44,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 badge-blue mb-6"
+                className="inline-flex items-center gap-2 badge-blue mb-6 mt-4 md:mt-0"
               >
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 First-Generation Student & Entrepreneur
