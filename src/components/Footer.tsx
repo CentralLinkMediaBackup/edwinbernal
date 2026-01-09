@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ContactForm from "./ContactForm";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -30,10 +31,15 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Contact Form */}
+          <div className="mb-12">
+            <ContactForm />
+          </div>
+
           {/* Contact Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <motion.a
-              href="mailto:EdwinBernal2025@outlook.com"
+              href="mailto:EdwinBernal2026@gmail.com"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -43,8 +49,23 @@ const Footer = () => {
               <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Mail className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-sm text-muted-foreground mb-1">Email</p>
-              <p className="text-foreground font-medium text-sm">EdwinBernal2025@outlook.com</p>
+              <p className="text-sm text-muted-foreground mb-1">Personal Email</p>
+              <p className="text-foreground font-medium text-xs">EdwinBernal2026@gmail.com</p>
+            </motion.a>
+
+            <motion.a
+              href="mailto:e.bernal@centrallinkmedia.com"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="glass-card-hover p-6 text-center group"
+            >
+              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                <Briefcase className="h-6 w-6 text-secondary" />
+              </div>
+              <p className="text-sm text-muted-foreground mb-1">Business Email</p>
+              <p className="text-foreground font-medium text-xs">e.bernal@centrallinkmedia.com</p>
             </motion.a>
 
             <motion.a
@@ -55,8 +76,8 @@ const Footer = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="glass-card-hover p-6 text-center group"
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                <Phone className="h-6 w-6 text-secondary" />
+              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Phone className="h-6 w-6 text-primary" />
               </div>
               <p className="text-sm text-muted-foreground mb-1">Phone</p>
               <p className="text-foreground font-medium">(945)-954-7416</p>
@@ -66,11 +87,11 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
               className="glass-card p-6 text-center"
             >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                <MapPin className="h-6 w-6 text-primary" />
+              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center">
+                <MapPin className="h-6 w-6 text-secondary" />
               </div>
               <p className="text-sm text-muted-foreground mb-1">Location</p>
               <p className="text-foreground font-medium text-sm">Dallas, TX 75212</p>

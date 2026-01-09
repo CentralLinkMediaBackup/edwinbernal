@@ -100,7 +100,7 @@ const VenturesSection = () => {
             
             <div className="space-y-4">
               <div className="glass-card p-3 text-center">
-                <span className="text-2xl font-bold text-gradient-gold">60K+</span>
+                <span className="text-2xl font-bold text-gradient-gold">50K+</span>
                 <p className="text-xs text-muted-foreground">Followers</p>
               </div>
               <div className="glass-card p-3 text-center">
@@ -173,10 +173,15 @@ const VenturesSection = () => {
             </h3>
             <p className="text-primary font-medium mb-4">Founder</p>
             
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Dallas-based digital solutions company helping small businesses grow their online 
               presence with affordable, high-quality website design and digital branding services.
             </p>
+            
+            <div className="glass-card p-3 text-center">
+              <span className="text-xl font-bold text-gradient-gold">$100K</span>
+              <p className="text-xs text-muted-foreground">Revenue in 8 Months</p>
+            </div>
           </motion.div>
         </div>
       </div>

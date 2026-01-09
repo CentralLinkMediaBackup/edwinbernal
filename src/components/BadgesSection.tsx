@@ -16,7 +16,7 @@ const badges = [
 
 const honorsAwards = [
   { title: "Best Lite Award", subtitle: "3 Consecutive Years" },
-  { title: "Congressional Recognition", subtitle: "Special Honor" },
+  { title: "Congressional Recognition", subtitle: "Presented by Judge Carl Ginsberg" },
   { title: "ESUME Entrepreneur Scholarship", subtitle: "Scholarship Recipient" },
 ];
 
@@ -134,9 +134,9 @@ const BadgesSection = () => {
               {[...badges, ...badges].map((badge, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-2 px-4 py-2 mx-2 glass-card whitespace-nowrap"
+                  className="flex items-center gap-2 px-4 py-2 mx-2 glass-card whitespace-nowrap flex-shrink-0"
                 >
-                  <badge.icon className="h-4 w-4 text-secondary" />
+                  <badge.icon className="h-4 w-4 text-secondary flex-shrink-0" />
                   <span className="text-sm text-foreground font-medium">{badge.title}</span>
                 </div>
               ))}

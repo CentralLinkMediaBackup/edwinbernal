@@ -29,14 +29,20 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            className="font-display text-5xl md:text-7xl font-bold mb-4 leading-tight"
           >
             <span className="text-foreground">Edwin Bernal</span>
-            <br />
-            <span className="text-gradient-gold">Future Corporate Attorney</span>
-            <br />
-            <span className="text-gradient-blue">& Entrepreneur</span>
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-2xl md:text-3xl font-light mb-6"
+          >
+            <span className="text-gradient-gold">Corporate Attorney</span>
+            <span className="text-muted-foreground mx-3">|</span>
+            <span className="text-gradient-blue">Entrepreneur</span>
+          </motion.p>
 
           {/* Sub-headline */}
           <motion.p
