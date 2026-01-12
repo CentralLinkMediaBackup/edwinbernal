@@ -128,12 +128,12 @@ const VenturesSection = () => {
             <h3 className="font-display text-2xl font-bold mb-2 text-foreground">
               Prosperity Fire Protection
             </h3>
-            <p className="text-secondary font-medium mb-4">Executive Assistant</p>
+            <p className="text-secondary font-medium mb-4">Project Manager</p>
             
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Supporting the President with high-level administrative and operational tasks. 
-              Assisting in editing and reviewing contracts and construction blueprints to ensure 
-              accuracy and compliance.
+              Leading fire protection projects from inception to completion, coordinating with clients, 
+              contractors, and teams to ensure timely delivery. Managing project schedules, budgets, 
+              and resources while ensuring compliance with safety regulations and quality standards.
             </p>
 
             {/* Key Duties */}
