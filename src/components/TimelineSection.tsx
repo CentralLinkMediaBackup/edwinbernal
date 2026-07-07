@@ -1,5 +1,8 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
 import { Briefcase, GraduationCap, Users, Coffee, ShoppingBag, Monitor, UtensilsCrossed } from "lucide-react";
+import { Reveal, SplitWords, EASE_OUT } from "./motion/Reveal";
+import SpotlightCard from "./motion/SpotlightCard";
 
 const experiences = [
   {
@@ -61,53 +64,69 @@ const experiences = [
 ];
 
 const TimelineSection = () => {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 75%", "end 60%"],
+  });
+  const lineScale = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
+
   return (
     <section id="experience" className="py-24 relative">
       <div className="absolute inset-0 grid-bg opacity-50" />
-      
+
       <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <span className="badge-blue mb-4 inline-block">Career Journey</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Professional <span className="text-gradient-blue">Experience</span>
+            <SplitWords
+              text="Professional Experience"
+              wordClassName={(word) => (word === "Experience" ? "text-gradient-blue" : undefined)}
+            />
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A timeline of growth, learning, and impactful contributions.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Timeline */}
-        <div className="max-w-3xl mx-auto relative">
-          {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-secondary to-primary" />
+        <div ref={timelineRef} className="max-w-3xl mx-auto relative">
+          {/* Vertical line, drawn in as the user scrolls */}
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border/60" />
+          <motion.div
+            style={reduceMotion ? undefined : { scaleY: lineScale }}
+            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-primary via-secondary to-primary"
+          />
 
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 32, x: index % 2 === 0 ? -12 : 12 }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.65, ease: EASE_OUT }}
               className={`relative flex items-start gap-8 mb-12 ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
               {/* Timeline Dot */}
               <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10">
-                <div className="timeline-dot" />
+                <motion.div
+                  initial={reduceMotion ? undefined : { scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.45, delay: 0.2, type: "spring", stiffness: 300, damping: 18 }}
+                  className="timeline-dot"
+                />
               </div>
 
               {/* Content Card */}
               <div className={`ml-16 md:ml-0 md:w-[calc(50%-2rem)] ${
                 index % 2 === 0 ? "md:pr-8" : "md:pl-8"
               }`}>
-                <div className="glass-card-hover p-6">
+                <SpotlightCard className="p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`p-2 rounded-lg ${
                       exp.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
@@ -122,7 +141,7 @@ const TimelineSection = () => {
                       {exp.period}
                     </span>
                   </div>
-                  
+
                   <h3 className="font-display text-xl font-bold text-foreground mb-1">
                     {exp.title}
                   </h3>
@@ -134,7 +153,7 @@ const TimelineSection = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {exp.description}
                   </p>
-                </div>
+                </SpotlightCard>
               </div>
             </motion.div>
           ))}

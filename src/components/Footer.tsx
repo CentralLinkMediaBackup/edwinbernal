@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactForm from "./ContactForm";
+import { Reveal, RevealGroup, RevealItem, SplitWords } from "./motion/Reveal";
+import SpotlightCard from "./motion/SpotlightCard";
+import Magnetic from "./motion/Magnetic";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -12,24 +14,21 @@ const Footer = () => {
     <footer id="contact" className="relative py-20 border-t border-border">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[150px] -translate-x-1/2" />
-      
+
       <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <Reveal className="text-center mb-12">
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Let's <span className="text-gradient-blue">Connect</span>
+              <SplitWords
+                text="Let's Connect"
+                wordClassName={(word) => (word === "Connect" ? "text-gradient-blue" : undefined)}
+              />
             </h2>
             <p className="text-muted-foreground text-lg">
               Ready to discuss opportunities or collaborations? Get in touch.
             </p>
-          </div>
+          </Reveal>
 
           {/* Contact Form */}
           <div className="mb-12">
@@ -37,92 +36,77 @@ const Footer = () => {
           </div>
 
           {/* Contact Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <motion.a
-              href="mailto:EdwinBernal2026@gmail.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Mail className="h-6 w-6 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Personal Email</p>
-              <p className="text-foreground font-medium text-xs">EdwinBernal2026@gmail.com</p>
-            </motion.a>
+          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" stagger={0.08}>
+            <RevealItem>
+              <a href="mailto:EdwinBernal2026@gmail.com" className="block h-full">
+                <SpotlightCard className="p-6 text-center group h-full">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-1">Personal Email</p>
+                  <p className="text-foreground font-medium text-xs">EdwinBernal2026@gmail.com</p>
+                </SpotlightCard>
+              </a>
+            </RevealItem>
 
-            <motion.a
-              href="mailto:e.bernal@centrallinkmedia.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                <Briefcase className="h-6 w-6 text-secondary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Business Email</p>
-              <p className="text-foreground font-medium text-xs">e.bernal@centrallinkmedia.com</p>
-            </motion.a>
+            <RevealItem>
+              <a href="mailto:e.bernal@centrallinkmedia.com" className="block h-full">
+                <SpotlightCard className="p-6 text-center group h-full">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+                    <Briefcase className="h-6 w-6 text-secondary" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-1">Business Email</p>
+                  <p className="text-foreground font-medium text-xs">e.bernal@centrallinkmedia.com</p>
+                </SpotlightCard>
+              </a>
+            </RevealItem>
 
-            <motion.a
-              href="tel:+19459547416"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Phone className="h-6 w-6 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Phone</p>
-              <p className="text-foreground font-medium">(945)-954-7416</p>
-            </motion.a>
+            <RevealItem>
+              <a href="tel:+19459547416" className="block h-full">
+                <SpotlightCard className="p-6 text-center group h-full">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-1">Phone</p>
+                  <p className="text-foreground font-medium">(945)-954-7416</p>
+                </SpotlightCard>
+              </a>
+            </RevealItem>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.25 }}
-              className="glass-card p-6 text-center"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center">
-                <MapPin className="h-6 w-6 text-secondary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Location</p>
-              <p className="text-foreground font-medium text-sm">Dallas, TX 75212</p>
-            </motion.div>
-          </div>
+            <RevealItem>
+              <SpotlightCard className="p-6 text-center h-full">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center">
+                  <MapPin className="h-6 w-6 text-secondary" />
+                </div>
+                <p className="text-sm text-muted-foreground mb-1">Location</p>
+                <p className="text-foreground font-medium text-sm">Dallas, TX 75212</p>
+              </SpotlightCard>
+            </RevealItem>
+          </RevealGroup>
 
           {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="flex justify-center gap-4 mb-12"
-          >
-            <a
-              href="https://www.linkedin.com/in/edwinbernalz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-primary/10 transition-colors group"
-            >
-              <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a
-              href="https://www.instagram.com/edwinbernal.tx/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-secondary/10 transition-colors group"
-            >
-              <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-secondary transition-colors" />
-            </a>
-          </motion.div>
+          <Reveal className="flex justify-center gap-4 mb-12" delay={0.2}>
+            <Magnetic strength={0.4}>
+              <a
+                href="https://www.linkedin.com/in/edwinbernalz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-primary/10 transition-colors group"
+              >
+                <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.4}>
+              <a
+                href="https://www.instagram.com/edwinbernal.tx/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-secondary/10 transition-colors group"
+              >
+                <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-secondary transition-colors" />
+              </a>
+            </Magnetic>
+          </Reveal>
 
           {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border">
@@ -136,7 +120,7 @@ const Footer = () => {
                 © 2025 Edwin Bernal. All rights reserved.
               </p>
             </div>
-            
+
             <Button
               variant="ghost"
               size="sm"
@@ -147,7 +131,7 @@ const Footer = () => {
               <ArrowUp className="ml-2 h-4 w-4" />
             </Button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

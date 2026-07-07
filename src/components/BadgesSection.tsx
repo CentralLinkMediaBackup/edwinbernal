@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Award, Users, Scale, Globe, Mic, Building, Star, GraduationCap, TrendingUp, Crown, Heart, BookOpen } from "lucide-react";
+import { Award, Users, Scale, Globe, Mic, Building, Star, GraduationCap, Crown, Heart, BookOpen } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem, SplitWords, fadeScale } from "./motion/Reveal";
+import SpotlightCard from "./motion/SpotlightCard";
 
 const badges = [
   { title: "Mock Trial President", subtitle: "ETAMU", icon: Scale },
@@ -24,117 +26,93 @@ const BadgesSection = () => {
   return (
     <section id="leadership" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/5 to-background" />
-      
+
       <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <Reveal className="text-center mb-16">
           <span className="badge-gold mb-4 inline-block">Recognition</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Leadership & <span className="text-gradient-gold">Extracurriculars</span>
+            <SplitWords
+              text="Leadership & Extracurriculars"
+              wordClassName={(word) => (word === "Extracurriculars" ? "text-gradient-gold" : undefined)}
+            />
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Positions of leadership and organizations that have shaped my journey.
           </p>
-        </motion.div>
+        </Reveal>
 
         {/* Badges Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+        <RevealGroup
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto"
+          stagger={0.05}
+        >
           {badges.map((badge, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="glass-card-hover p-4 text-center group cursor-default"
-            >
-              <div className="relative mx-auto w-14 h-14 mb-3">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl rotate-6 group-hover:rotate-12 transition-transform" />
-                <div className="relative w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex items-center justify-center">
-                  <badge.icon className="h-7 w-7 text-secondary group-hover:text-primary transition-colors" />
+            <RevealItem key={index} variants={fadeScale}>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="glass-card-hover p-4 text-center group cursor-default h-full"
+              >
+                <div className="relative mx-auto w-14 h-14 mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl rotate-6 group-hover:rotate-12 transition-transform" />
+                  <div className="relative w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex items-center justify-center">
+                    <badge.icon className="h-7 w-7 text-secondary group-hover:text-primary transition-colors" />
+                  </div>
                 </div>
-              </div>
-              <h3 className="font-display text-sm font-bold text-foreground mb-1 leading-tight">
-                {badge.title}
-              </h3>
-              <p className="text-xs text-muted-foreground">
-                {badge.subtitle}
-              </p>
-            </motion.div>
+                <h3 className="font-display text-sm font-bold text-foreground mb-1 leading-tight">
+                  {badge.title}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {badge.subtitle}
+                </p>
+              </motion.div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
         {/* Honors & Awards */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 max-w-4xl mx-auto"
-        >
+        <Reveal className="mt-16 max-w-4xl mx-auto" delay={0.1}>
           <h3 className="text-center font-display text-2xl font-bold mb-8">
             Honors & <span className="text-gradient-blue">Awards</span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-4" stagger={0.1}>
             {honorsAwards.map((award, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="glass-card p-6 text-center"
-              >
-                <Award className="h-8 w-8 text-secondary mx-auto mb-3" />
-                <h4 className="font-display font-bold text-foreground mb-1">{award.title}</h4>
-                <p className="text-sm text-muted-foreground">{award.subtitle}</p>
-              </motion.div>
+              <RevealItem key={index}>
+                <SpotlightCard className="p-6 text-center h-full">
+                  <Award className="h-8 w-8 text-secondary mx-auto mb-3" />
+                  <h4 className="font-display font-bold text-foreground mb-1">{award.title}</h4>
+                  <p className="text-sm text-muted-foreground">{award.subtitle}</p>
+                </SpotlightCard>
+              </RevealItem>
             ))}
-          </div>
-        </motion.div>
+          </RevealGroup>
+        </Reveal>
 
         {/* Featured Press */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 max-w-2xl mx-auto"
-        >
-          <a 
+        <Reveal className="mt-12 max-w-2xl mx-auto" delay={0.15}>
+          <a
             href="https://www.etamu.edu/news/transforming-lives-through-leadership-edwin-zack-bernals-path-of-purpose-and-perseverance/"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-card-hover p-6 text-center block hover:border-primary/50 transition-colors"
+            className="block"
           >
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="badge-blue">Featured in ETAMU News</span>
-            </div>
-            <p className="text-foreground font-medium">
-              "Transforming Lives Through Leadership: Edwin Zack Bernal's Path of Purpose and Perseverance"
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              East Texas A&M University Official News →
-            </p>
+            <SpotlightCard className="p-6 text-center hover:border-primary/50">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <GraduationCap className="h-6 w-6 text-primary" />
+                <span className="badge-blue">Featured in ETAMU News</span>
+              </div>
+              <p className="text-foreground font-medium">
+                "Transforming Lives Through Leadership: Edwin Zack Bernal's Path of Purpose and Perseverance"
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                East Texas A&M University Official News →
+              </p>
+            </SpotlightCard>
           </a>
-        </motion.div>
+        </Reveal>
 
         {/* Publication */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 max-w-2xl mx-auto"
-        >
-          <div className="glass-card-hover p-6 text-center">
+        <Reveal className="mt-6 max-w-2xl mx-auto" delay={0.2}>
+          <SpotlightCard className="p-6 text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
               <BookOpen className="h-6 w-6 text-primary" />
               <span className="badge-blue">Publication</span>
@@ -142,22 +120,16 @@ const BadgesSection = () => {
             <p className="text-foreground font-medium italic">
               "Poison or Cure? Comparison Among Students and its effect on Mental Health"
             </p>
-          </div>
-        </motion.div>
+          </SpotlightCard>
+        </Reveal>
 
         {/* Marquee Effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 overflow-hidden"
-        >
+        <Reveal className="mt-12 overflow-hidden" delay={0.1}>
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
-            
-            <div className="flex ticker-scroll">
+
+            <div className="flex ticker-scroll pause-on-hover">
               {[...badges, ...badges].map((badge, index) => (
                 <div
                   key={index}
@@ -169,7 +141,7 @@ const BadgesSection = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );
