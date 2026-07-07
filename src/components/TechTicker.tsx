@@ -1,51 +1,36 @@
-import { motion } from "framer-motion";
-import { Target, TrendingUp, Users, Code, FileSpreadsheet, Globe, Palette, BarChart3, Megaphone } from "lucide-react";
-
 const skills = [
-  { name: "Strategy", icon: Target },
-  { name: "Business Dev", icon: TrendingUp },
-  { name: "Executive Mgmt", icon: Users },
-  { name: "Web Design", icon: Code },
-  { name: "SEO", icon: BarChart3 },
-  { name: "Analytics", icon: BarChart3 },
-  { name: "Social Media", icon: Megaphone },
-  { name: "Branding", icon: Palette },
-  { name: "MS Office", icon: FileSpreadsheet },
-  { name: "Google Suite", icon: Globe },
-  { name: "Java", icon: Code },
-  { name: "HTML", icon: Code },
+  "Strategy",
+  "Business Dev",
+  "Executive Mgmt",
+  "Web Design",
+  "SEO",
+  "Analytics",
+  "Social Media",
+  "Branding",
+  "MS Office",
+  "Google Suite",
+  "Java",
+  "HTML",
 ];
 
+/** Full-bleed marquee of core competencies between hairline rules. */
 const TechTicker = () => {
   return (
-    <div className="absolute left-0 right-0 -mx-6 lg:-mx-[calc(50vw-50%)]">
-      <div className="text-center mb-6">
-        <span className="text-sm text-muted-foreground uppercase tracking-wider">
-          Core Competencies
-        </span>
+    <div className="border-y border-border bg-paper overflow-hidden relative">
+      <div className="hidden lg:flex absolute left-0 top-0 bottom-0 z-10 items-center bg-paper border-r border-border px-6">
+        <span className="eyebrow text-muted-foreground">Core Competencies</span>
       </div>
-      
-      <div className="relative overflow-hidden w-screen">
-        {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
-        
-        <motion.div
-          className="flex gap-6 ticker-scroll"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          {[...skills, ...skills].map((skill, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 px-5 py-3 glass-card whitespace-nowrap flex-shrink-0"
-            >
-              <skill.icon className="h-5 w-5 text-primary flex-shrink-0" />
-              <span className="text-sm font-medium text-foreground">{skill.name}</span>
-            </div>
-          ))}
-        </motion.div>
+      <span className="lg:hidden sr-only">Core Competencies</span>
+      <div className="flex ticker-scroll pause-on-hover py-4">
+        {[...skills, ...skills].map((skill, index) => (
+          <span
+            key={index}
+            className="flex items-center whitespace-nowrap flex-shrink-0 eyebrow text-ink"
+          >
+            <span className="px-6">{skill}</span>
+            <span className="text-cobalt font-display" aria-hidden="true">✳</span>
+          </span>
+        ))}
       </div>
     </div>
   );

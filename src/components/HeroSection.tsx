@@ -1,13 +1,19 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowRight, Briefcase, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import TechTicker from "./TechTicker";
 import ParticleNetwork from "./motion/ParticleNetwork";
 import Magnetic from "./motion/Magnetic";
+import CircularText from "./motion/CircularText";
 import { EASE_OUT } from "./motion/Reveal";
 import { scrollToTarget } from "@/lib/scroll";
 import edwinProfile from "@/assets/edwin-profile.png";
+
+const lineReveal = (delay: number, reduce: boolean) => ({
+  initial: reduce ? { opacity: 0 } : { y: "110%" },
+  animate: reduce ? { opacity: 1 } : { y: 0 },
+  transition: { duration: 0.9, delay, ease: EASE_OUT },
+});
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,183 +23,155 @@ const HeroSection = () => {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
+  const headlineY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 140]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -60]);
+  const fade = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 120]);
-  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 60]);
-  const backdropY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -80]);
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const D = reduceMotion ? 0 : 1.6; // delay offset after preloader curtain lifts
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
-      {/* Node network — a nod to Central Link */}
-      <ParticleNetwork className="absolute inset-0 h-full w-full" />
+    <section ref={sectionRef} className="relative min-h-screen flex flex-col justify-between overflow-hidden pt-28 md:pt-32">
+      {/* Ink node network — the Central Link motif, whisper-quiet on paper */}
+      <ParticleNetwork className="absolute inset-0 h-full w-full opacity-70" />
 
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background pointer-events-none" />
-      <motion.div style={{ y: backdropY }} className="absolute inset-0 pointer-events-none">
-        <div className="aurora absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="aurora-delayed absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
-      </motion.div>
+      <div className="container relative z-10 px-6 flex-1 flex flex-col justify-center">
+        {/* Meta line */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: D }}
+          className="rule pt-4 mb-8 md:mb-12 flex flex-wrap items-center justify-between gap-3"
+        >
+          <span className="eyebrow text-muted-foreground flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-cobalt inline-block" />
+            First-Generation Student &amp; Entrepreneur
+          </span>
+          <span className="eyebrow text-muted-foreground hidden md:block">Dallas, TX — Portfolio</span>
+        </motion.div>
 
-      <div className="container relative z-10 px-6 pt-24 md:pt-20 py-20">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Profile Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: EASE_OUT }}
-              style={{ y: portraitY }}
-              className="relative flex-shrink-0"
-            >
-              <div className="portrait-frame relative w-64 h-64 md:w-80 md:h-80 rounded-2xl">
-                <div className="w-full h-full rounded-2xl overflow-hidden border-4 border-primary/30 shadow-2xl glow-blue">
-                  <img
-                    src={edwinProfile}
-                    alt="Edwin Bernal"
-                    className="w-full h-full object-cover object-[center_35%]"
-                  />
-                </div>
-              </div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0, rotate: -20 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.6, delay: 0.5, ease: EASE_OUT }}
-                className="absolute -bottom-3 -right-3 w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center"
-              >
-                <span className="font-display text-2xl font-bold">
-                  <span className="text-gradient-gold">E</span>
-                  <span className="text-white">B</span>
-                </span>
-              </motion.div>
-            </motion.div>
-
-            {/* Text Content */}
-            <motion.div style={{ y: contentY, opacity: fade }} className="text-center lg:text-left flex-1">
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: EASE_OUT }}
-                className="inline-flex items-center gap-2 badge-blue mb-6 mt-4 md:mt-0"
-              >
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                First-Generation Student & Entrepreneur
-              </motion.div>
-
-              {/* Main Headline */}
-              <h1 className="font-display text-5xl md:text-7xl font-bold mb-4 leading-tight overflow-hidden">
-                <motion.span
-                  initial={reduceMotion ? { opacity: 0 } : { y: "100%", opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.1, ease: EASE_OUT }}
-                  className="inline-block text-foreground"
-                >
-                  Edwin Bernal
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+          {/* Headline block */}
+          <motion.div style={{ y: headlineY, opacity: fade }} className="lg:col-span-8">
+            <h1 className="font-display font-light tracking-tight leading-[0.9] text-ink text-[17vw] sm:text-[13vw] lg:text-[9.5rem] xl:text-[11rem]">
+              <span className="block overflow-hidden">
+                <motion.span {...lineReveal(D + 0.05, !!reduceMotion)} className="block">
+                  Edwin
                 </motion.span>
-              </h1>
+              </span>
+              <span className="block overflow-hidden">
+                <motion.span {...lineReveal(D + 0.18, !!reduceMotion)} className="block">
+                  <span className="font-display-italic text-cobalt">Bernal</span>
+                </motion.span>
+              </span>
+            </h1>
+
+            <div className="overflow-hidden mt-6">
               <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: EASE_OUT }}
-                className="text-2xl md:text-3xl font-light mb-6"
+                {...lineReveal(D + 0.35, !!reduceMotion)}
+                className="font-display-italic text-2xl md:text-3xl text-ink"
               >
-                <span className="text-gradient-gold">Company Owner</span>
+                Company Owner
               </motion.p>
+            </div>
 
-              {/* Sub-headline */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2, ease: EASE_OUT }}
-                className="text-xl md:text-2xl text-muted-foreground mb-6 font-light"
-              >
-                A&M Alumni | Project Manager, Prosperity Fire Protection, LLC
-                <br />
-                <span className="text-primary">Founder, Central Link Media, LLC</span>
-                <span className="text-muted-foreground mx-2">|</span>
-                <span className="text-secondary">53K+ Followers on Instagram</span>
-              </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: D + 0.5, ease: EASE_OUT }}
+              className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed"
+            >
+              A&amp;M Alumni&ensp;|&ensp;Project Manager, Prosperity Fire Protection, LLC
+              <br />
+              <span className="text-ink font-medium">Founder, Central Link Media, LLC</span>
+              <span className="mx-2 text-border">|</span>
+              <span className="text-cobalt font-medium">53K+ Followers on Instagram</span>
+            </motion.p>
 
-              {/* Bio Blurb */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, ease: EASE_OUT }}
-                className="glass-card p-6 mb-10 max-w-3xl mx-auto"
-              >
-                <p className="text-muted-foreground leading-relaxed">
-                  I am a driven leader, strategist, and entrepreneur currently pursuing a double major in{" "}
-                  <span className="text-primary font-medium">Finance</span> and{" "}
-                  <span className="text-primary font-medium">Political Science</span> with minors in{" "}
-                  <span className="text-secondary font-medium">Legal Studies</span> and{" "}
-                  <span className="text-secondary font-medium">Elementary Education</span>. A graduate of the{" "}
-                  <span className="text-secondary font-medium">Judge Barefoot Sanders Law Magnet</span>{" "}
-                  (ranked #85 nationwide), my academic foundation in business, law, and governance strengthens
-                  my work as a founder and future <span className="text-primary font-medium">corporate attorney</span>.
-                </p>
-              </motion.div>
-
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: EASE_OUT }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
-              >
-                <Magnetic>
-                  <Button
-                    size="lg"
-                    className="group w-full sm:w-auto bg-gradient-to-r from-primary to-electric-glow hover:opacity-90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl glow-blue"
-                    onClick={() => scrollToTarget('#ventures')}
-                  >
-                    <Briefcase className="mr-2 h-5 w-5" />
-                    View My Ventures
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Magnetic>
-                <Magnetic>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full sm:w-auto border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary font-semibold px-8 py-6 text-lg rounded-xl"
-                    onClick={() => scrollToTarget('#contact')}
-                  >
-                    <Mail className="mr-2 h-5 w-5" />
-                    Contact Me
-                  </Button>
-                </Magnetic>
-              </motion.div>
-
-              {/* Tech Stack Ticker */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="pb-20"
-              >
-                <TechTicker />
-              </motion.div>
+            {/* Actions */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: D + 0.65, ease: EASE_OUT }}
+              className="mt-10 flex flex-wrap items-center gap-5"
+            >
+              <Magnetic>
+                <button
+                  onClick={() => scrollToTarget('#ventures')}
+                  className="btn-editorial-fill px-8 py-4 text-base"
+                >
+                  View My Ventures
+                  <ArrowDown className="h-4 w-4" />
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <button
+                  onClick={() => scrollToTarget('#contact')}
+                  className="btn-editorial px-8 py-4 text-base"
+                >
+                  Contact Me
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </Magnetic>
             </motion.div>
-          </div>
+          </motion.div>
+
+          {/* Portrait */}
+          <motion.div
+            style={{ y: portraitY }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: D + 0.4, ease: EASE_OUT }}
+            className="lg:col-span-4 relative max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:justify-self-end"
+          >
+            <div className="portrait-editorial relative border border-ink bg-card">
+              <img
+                src={edwinProfile}
+                alt="Edwin Bernal"
+                className="w-full aspect-[4/5] object-cover object-[center_35%]"
+              />
+              <div className="rule px-4 py-3 flex items-center justify-between">
+                <span className="eyebrow text-muted-foreground">Est. Dallas</span>
+                <span className="font-display-italic text-ink">2025</span>
+              </div>
+            </div>
+            <CircularText
+              text="FOUNDER & CEO — CENTRAL LINK MEDIA — "
+              className="absolute -top-12 -left-12 text-ink hidden md:block"
+              size={128}
+            />
+          </motion.div>
         </div>
+
+        {/* Bio */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: D + 0.8, ease: EASE_OUT }}
+          className="rule mt-14 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4 pb-16"
+        >
+          <span className="eyebrow text-muted-foreground md:col-span-3">About</span>
+          <p className="md:col-span-9 max-w-3xl text-lg md:text-xl leading-relaxed text-ink/80">
+            I am a driven leader, strategist, and entrepreneur currently pursuing a double major in{" "}
+            <em className="font-display-italic text-cobalt not-italic">Finance</em> and{" "}
+            <em className="font-display-italic text-cobalt not-italic">Political Science</em> with minors in{" "}
+            <em className="font-display-italic text-cobalt not-italic">Legal Studies</em> and{" "}
+            <em className="font-display-italic text-cobalt not-italic">Elementary Education</em>. A graduate of the{" "}
+            <em className="font-display-italic not-italic">Judge Barefoot Sanders Law Magnet</em>{" "}
+            (ranked #85 nationwide), my academic foundation in business, law, and governance strengthens
+            my work as a founder and future{" "}
+            <em className="font-display-italic text-cobalt not-italic">corporate attorney</em>.
+          </p>
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Competencies ticker */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        style={{ opacity: fade }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20"
+        transition={{ duration: 0.8, delay: D + 1 }}
+        className="relative z-10"
       >
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-          <motion.div
-            animate={reduceMotion ? undefined : { y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-primary rounded-full"
-          />
-        </div>
+        <TechTicker />
       </motion.div>
     </section>
   );

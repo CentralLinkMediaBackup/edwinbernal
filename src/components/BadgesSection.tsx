@@ -1,19 +1,18 @@
-import { motion } from "framer-motion";
-import { Award, Users, Scale, Globe, Mic, Building, Star, GraduationCap, Crown, Heart, BookOpen } from "lucide-react";
-import { Reveal, RevealGroup, RevealItem, SplitWords, fadeScale } from "./motion/Reveal";
-import SpotlightCard from "./motion/SpotlightCard";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem, fadeScale } from "./motion/Reveal";
+import SectionHeader from "./SectionHeader";
 
 const badges = [
-  { title: "Mock Trial President", subtitle: "ETAMU", icon: Scale },
-  { title: "Model UN President", subtitle: "Leadership", icon: Globe },
-  { title: "Debate Team President", subtitle: "ETAMU", icon: Mic },
-  { title: "Moot Court President", subtitle: "ETAMU", icon: Scale },
-  { title: "College of Business Senator", subtitle: "Student Government", icon: Building },
-  { title: "Pi Sigma Alpha Honor Society", subtitle: "Member & Leader", icon: Award },
-  { title: "Sigma Chi Fraternity", subtitle: "ΣΧ Brother", icon: Users },
-  { title: "ETAMU Lion Ambassador", subtitle: "Campus Representative", icon: Crown },
-  { title: "Future Leaders of America", subtitle: "Member", icon: Star },
-  { title: "Project Transformation", subtitle: "Best Lite (3x Winner)", icon: Heart },
+  { title: "Mock Trial President", subtitle: "ETAMU" },
+  { title: "Model UN President", subtitle: "Leadership" },
+  { title: "Debate Team President", subtitle: "ETAMU" },
+  { title: "Moot Court President", subtitle: "ETAMU" },
+  { title: "College of Business Senator", subtitle: "Student Government" },
+  { title: "Pi Sigma Alpha Honor Society", subtitle: "Member & Leader" },
+  { title: "Sigma Chi Fraternity", subtitle: "ΣΧ Brother" },
+  { title: "ETAMU Lion Ambassador", subtitle: "Campus Representative" },
+  { title: "Future Leaders of America", subtitle: "Member" },
+  { title: "Project Transformation", subtitle: "Best Lite (3x Winner)" },
 ];
 
 const honorsAwards = [
@@ -24,125 +23,105 @@ const honorsAwards = [
 
 const BadgesSection = () => {
   return (
-    <section id="leadership" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/5 to-background" />
+    <section id="leadership" className="py-24 md:py-32 relative overflow-hidden">
+      <div className="container px-6">
+        <SectionHeader
+          number="03"
+          eyebrow="Recognition"
+          title="Leadership & Extracurriculars"
+          accentWord="Extracurriculars"
+          description="Positions of leadership and organizations that have shaped my journey."
+        />
 
-      <div className="container relative z-10 px-6">
-        <Reveal className="text-center mb-16">
-          <span className="badge-gold mb-4 inline-block">Recognition</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            <SplitWords
-              text="Leadership & Extracurriculars"
-              wordClassName={(word) => (word === "Extracurriculars" ? "text-gradient-gold" : undefined)}
-            />
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Positions of leadership and organizations that have shaped my journey.
-          </p>
-        </Reveal>
-
-        {/* Badges Grid */}
+        {/* Positions grid — tiles invert to ink on hover */}
         <RevealGroup
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-l border-border"
           stagger={0.05}
         >
           {badges.map((badge, index) => (
-            <RevealItem key={index} variants={fadeScale}>
-              <motion.div
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="glass-card-hover p-4 text-center group cursor-default h-full"
-              >
-                <div className="relative mx-auto w-14 h-14 mb-3">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl rotate-6 group-hover:rotate-12 transition-transform" />
-                  <div className="relative w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex items-center justify-center">
-                    <badge.icon className="h-7 w-7 text-secondary group-hover:text-primary transition-colors" />
-                  </div>
+            <RevealItem key={index} variants={fadeScale} className="border-b border-r border-border">
+              <div className="card-invert border-0 h-full p-6 flex flex-col justify-between min-h-[180px] cursor-default">
+                <span className="font-display text-sm invert-dim text-muted-foreground">
+                  ({String(index + 1).padStart(2, "0")})
+                </span>
+                <div>
+                  <h3 className="font-display font-normal text-lg leading-snug mb-1">
+                    {badge.title}
+                  </h3>
+                  <p className="eyebrow invert-dim text-muted-foreground">{badge.subtitle}</p>
                 </div>
-                <h3 className="font-display text-sm font-bold text-foreground mb-1 leading-tight">
-                  {badge.title}
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  {badge.subtitle}
-                </p>
-              </motion.div>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
 
         {/* Honors & Awards */}
-        <Reveal className="mt-16 max-w-4xl mx-auto" delay={0.1}>
-          <h3 className="text-center font-display text-2xl font-bold mb-8">
-            Honors & <span className="text-gradient-blue">Awards</span>
-          </h3>
-          <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-4" stagger={0.1}>
+        <Reveal className="mt-24" delay={0.1}>
+          <div className="rule pt-6 mb-10 flex items-baseline justify-between">
+            <span className="eyebrow text-muted-foreground">Honors &amp; Awards</span>
+            <span className="font-display text-sm text-muted-foreground">(03.1)</span>
+          </div>
+          <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-10" stagger={0.1}>
             {honorsAwards.map((award, index) => (
               <RevealItem key={index}>
-                <SpotlightCard className="p-6 text-center h-full">
-                  <Award className="h-8 w-8 text-secondary mx-auto mb-3" />
-                  <h4 className="font-display font-bold text-foreground mb-1">{award.title}</h4>
-                  <p className="text-sm text-muted-foreground">{award.subtitle}</p>
-                </SpotlightCard>
+                <div className="group">
+                  <span className="font-display-italic text-5xl md:text-6xl text-cobalt block mb-4">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h4 className="font-display font-light text-2xl md:text-3xl text-ink tracking-tight mb-2 group-hover:text-cobalt transition-colors duration-300">
+                    {award.title}
+                  </h4>
+                  <p className="text-muted-foreground">{award.subtitle}</p>
+                </div>
               </RevealItem>
             ))}
           </RevealGroup>
         </Reveal>
 
         {/* Featured Press */}
-        <Reveal className="mt-12 max-w-2xl mx-auto" delay={0.15}>
+        <Reveal className="mt-24" delay={0.1}>
           <a
             href="https://www.etamu.edu/news/transforming-lives-through-leadership-edwin-zack-bernals-path-of-purpose-and-perseverance/"
             target="_blank"
             rel="noopener noreferrer"
-            className="block"
+            className="row-hover rule group block py-10 px-2 md:px-4 -mx-2 md:-mx-4"
           >
-            <SpotlightCard className="p-6 text-center hover:border-primary/50">
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <GraduationCap className="h-6 w-6 text-primary" />
-                <span className="badge-blue">Featured in ETAMU News</span>
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <span className="eyebrow text-cobalt block mb-3">Featured in ETAMU News</span>
+                <p className="font-display font-light text-2xl md:text-4xl text-ink tracking-tight leading-snug max-w-3xl group-hover:text-cobalt transition-colors duration-300">
+                  "Transforming Lives Through Leadership: Edwin Zack Bernal's Path of Purpose and Perseverance"
+                </p>
+                <p className="eyebrow text-muted-foreground mt-4">
+                  East Texas A&amp;M University Official News
+                </p>
               </div>
-              <p className="text-foreground font-medium">
-                "Transforming Lives Through Leadership: Edwin Zack Bernal's Path of Purpose and Perseverance"
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                East Texas A&M University Official News →
-              </p>
-            </SpotlightCard>
-          </a>
-        </Reveal>
-
-        {/* Publication */}
-        <Reveal className="mt-6 max-w-2xl mx-auto" delay={0.2}>
-          <SpotlightCard className="p-6 text-center">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <BookOpen className="h-6 w-6 text-primary" />
-              <span className="badge-blue">Publication</span>
+              <ArrowUpRight className="h-8 w-8 text-ink flex-shrink-0 mt-2 group-hover:text-cobalt group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
             </div>
-            <p className="text-foreground font-medium italic">
+          </a>
+
+          {/* Publication */}
+          <div className="row-hover rule group py-10 px-2 md:px-4 -mx-2 md:-mx-4">
+            <span className="eyebrow text-cobalt block mb-3">Publication</span>
+            <p className="font-display-italic text-2xl md:text-3xl text-ink leading-snug max-w-3xl">
               "Poison or Cure? Comparison Among Students and its effect on Mental Health"
             </p>
-          </SpotlightCard>
-        </Reveal>
-
-        {/* Marquee Effect */}
-        <Reveal className="mt-12 overflow-hidden" delay={0.1}>
-          <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
-
-            <div className="flex ticker-scroll pause-on-hover">
-              {[...badges, ...badges].map((badge, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 px-4 py-2 mx-2 glass-card whitespace-nowrap flex-shrink-0"
-                >
-                  <badge.icon className="h-4 w-4 text-secondary flex-shrink-0" />
-                  <span className="text-sm text-foreground font-medium">{badge.title}</span>
-                </div>
-              ))}
-            </div>
           </div>
+          <div className="rule" />
         </Reveal>
       </div>
+
+      {/* Full-bleed marquee of positions */}
+      <Reveal className="mt-20 border-y border-border overflow-hidden" delay={0.1}>
+        <div className="flex ticker-scroll-fast pause-on-hover py-5">
+          {[...badges, ...badges].map((badge, index) => (
+            <span key={index} className="flex items-center whitespace-nowrap flex-shrink-0">
+              <span className="px-6 font-display font-light text-2xl text-ink">{badge.title}</span>
+              <span className="text-cobalt font-display" aria-hidden="true">✳</span>
+            </span>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 };

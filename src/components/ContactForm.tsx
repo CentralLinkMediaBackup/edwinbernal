@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Send, Loader2, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+
+const fieldClass =
+  "w-full bg-transparent border-0 border-b border-paper-dim rounded-none px-0 py-3 text-paper placeholder:text-paper/30 focus:outline-none focus:border-b-2 focus:border-cobalt transition-colors font-body";
 
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -52,29 +50,22 @@ const ContactForm = () => {
   };
 
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      onSubmit={handleSubmit}
-      className="glass-card p-8 max-w-2xl mx-auto"
-    >
-      <h3 className="font-display text-2xl font-bold mb-6 text-center">
-        Send a <span className="text-gradient-blue">Message</span>
+    <form onSubmit={handleSubmit}>
+      <h3 className="font-display font-light text-3xl tracking-tight mb-8">
+        Send a <span className="font-display-italic text-cobalt-soft">Message</span>
       </h3>
 
       {/* Inquiry Type */}
-      <div className="mb-6">
-        <Label className="text-foreground mb-3 block">Inquiry Type</Label>
-        <div className="flex gap-4">
+      <div className="mb-8">
+        <p className="eyebrow text-paper/50 mb-4">Inquiry Type</p>
+        <div className="flex gap-3">
           <button
             type="button"
             onClick={() => setFormData(prev => ({ ...prev, type: "personal" }))}
-            className={`flex-1 py-3 px-4 rounded-xl border transition-all ${
+            className={`px-6 py-2.5 rounded-full border text-sm transition-all duration-300 ${
               formData.type === "personal"
-                ? "border-primary bg-primary/10 text-primary"
-                : "border-border text-muted-foreground hover:border-primary/50"
+                ? "border-cobalt bg-cobalt text-paper"
+                : "border-paper-dim text-paper/60 hover:border-paper/60 hover:text-paper"
             }`}
           >
             Personal
@@ -82,10 +73,10 @@ const ContactForm = () => {
           <button
             type="button"
             onClick={() => setFormData(prev => ({ ...prev, type: "business" }))}
-            className={`flex-1 py-3 px-4 rounded-xl border transition-all ${
+            className={`px-6 py-2.5 rounded-full border text-sm transition-all duration-300 ${
               formData.type === "business"
-                ? "border-secondary bg-secondary/10 text-secondary"
-                : "border-border text-muted-foreground hover:border-secondary/50"
+                ? "border-cobalt bg-cobalt text-paper"
+                : "border-paper-dim text-paper/60 hover:border-paper/60 hover:text-paper"
             }`}
           >
             Business / Entrepreneur
@@ -93,87 +84,87 @@ const ContactForm = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-6">
         <div>
-          <Label htmlFor="name" className="text-foreground mb-2 block">Name</Label>
-          <Input
+          <label htmlFor="name" className="eyebrow text-paper/50 block mb-1">Name</label>
+          <input
             id="name"
             value={formData.name}
             onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
             placeholder="Your name"
             required
-            className="bg-background/50 border-border focus:border-primary"
+            className={fieldClass}
           />
         </div>
         <div>
-          <Label htmlFor="email" className="text-foreground mb-2 block">Email</Label>
-          <Input
+          <label htmlFor="email" className="eyebrow text-paper/50 block mb-1">Email</label>
+          <input
             id="email"
             type="email"
             value={formData.email}
             onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
             placeholder="your@email.com"
             required
-            className="bg-background/50 border-border focus:border-primary"
+            className={fieldClass}
           />
         </div>
       </div>
 
-      <div className="mb-4">
-        <Label htmlFor="subject" className="text-foreground mb-2 block">Subject</Label>
-        <Input
+      <div className="mb-6">
+        <label htmlFor="subject" className="eyebrow text-paper/50 block mb-1">Subject</label>
+        <input
           id="subject"
           value={formData.subject}
           onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
           placeholder="What is this regarding?"
           required
-          className="bg-background/50 border-border focus:border-primary"
+          className={fieldClass}
         />
       </div>
 
-      <div className="mb-6">
-        <Label htmlFor="message" className="text-foreground mb-2 block">Message</Label>
-        <Textarea
+      <div className="mb-10">
+        <label htmlFor="message" className="eyebrow text-paper/50 block mb-1">Message</label>
+        <textarea
           id="message"
           value={formData.message}
           onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
           placeholder="Your message..."
-          rows={5}
+          rows={4}
           required
-          className="bg-background/50 border-border focus:border-primary resize-none"
+          className={`${fieldClass} resize-none`}
         />
       </div>
 
-      <Button
+      <button
         type="submit"
         disabled={isLoading || isSuccess}
-        className="w-full bg-gradient-to-r from-primary to-electric-glow text-primary-foreground hover:opacity-90 py-6"
+        className="btn-editorial-paper w-full md:w-auto px-10 py-4 disabled:opacity-60 disabled:pointer-events-none"
       >
         {isLoading ? (
           <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
             Sending...
           </>
         ) : isSuccess ? (
           <>
-            <CheckCircle className="mr-2 h-5 w-5" />
+            <CheckCircle className="h-4 w-4" />
             Sent!
           </>
         ) : (
           <>
-            <Send className="mr-2 h-5 w-5" />
+            <Send className="h-4 w-4" />
             Send Message
           </>
         )}
-      </Button>
+      </button>
 
-      <p className="text-xs text-muted-foreground text-center mt-4">
-        {formData.type === "personal" 
+      <p className="eyebrow text-paper/40 mt-6">
+        {formData.type === "personal"
           ? "Personal inquiries → EdwinBernal2026@gmail.com"
           : "Business inquiries → e.bernal@centrallinkmedia.com"
         }
       </p>
-    </motion.form>
+    </form>
   );
 };
 

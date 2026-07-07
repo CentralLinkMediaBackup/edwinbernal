@@ -84,8 +84,10 @@ const ParticleNetwork = ({ className }: { className?: string }) => {
           const mouseDist = Math.hypot(midX - mouse.x, midY - mouse.y);
           const nearMouse = Math.max(0, 1 - mouseDist / MOUSE_DIST);
 
-          const alpha = (1 - dist / LINK_DIST) * (0.14 + nearMouse * 0.4);
-          ctx.strokeStyle = `hsla(211, 100%, ${55 + nearMouse * 15}%, ${alpha})`;
+          const alpha = (1 - dist / LINK_DIST) * (0.1 + nearMouse * 0.35);
+          ctx.strokeStyle = nearMouse > 0.25
+            ? `hsla(233, 84%, 53%, ${alpha})`
+            : `hsla(45, 12%, 8%, ${alpha})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -96,8 +98,8 @@ const ParticleNetwork = ({ className }: { className?: string }) => {
 
       for (const node of nodes) {
         ctx.fillStyle = node.gold
-          ? "hsla(51, 100%, 55%, 0.75)"
-          : "hsla(211, 100%, 60%, 0.65)";
+          ? "hsla(233, 84%, 53%, 0.8)"
+          : "hsla(45, 12%, 8%, 0.5)";
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
         ctx.fill();
