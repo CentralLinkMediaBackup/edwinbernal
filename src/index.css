@@ -238,10 +238,99 @@
 
   /* Grid Background */
   .grid-bg {
-    background-image: 
+    background-image:
       linear-gradient(hsla(211, 100%, 50%, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, hsla(211, 100%, 50%, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+
+  /* Cursor-following spotlight on glass cards (see SpotlightCard) */
+  .spotlight-card {
+    --spot-x: 50%;
+    --spot-y: 50%;
+  }
+
+  .spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      420px circle at var(--spot-x) var(--spot-y),
+      hsla(211, 100%, 60%, 0.08),
+      transparent 65%
+    );
+  }
+
+  .spotlight-card:hover::after {
+    opacity: 1;
+  }
+
+  /* Animated underline for nav links */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.3rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, hsl(211 100% 55%), hsl(51 100% 55%));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-underline:hover::after,
+  .link-underline[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Slow aurora drift behind the hero */
+  @keyframes aurora-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(4%, -6%) scale(1.1); }
+    66% { transform: translate(-5%, 4%) scale(0.95); }
+  }
+
+  .aurora {
+    animation: aurora-drift 18s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .aurora-delayed {
+    animation: aurora-drift 22s ease-in-out infinite reverse;
+    will-change: transform;
+  }
+
+  /* Slow conic sheen sweeping the profile portrait frame */
+  @keyframes frame-sheen {
+    to { transform: rotate(360deg); }
+  }
+
+  .portrait-frame::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      hsla(211, 100%, 55%, 0.6) 40deg,
+      transparent 90deg,
+      transparent 200deg,
+      hsla(51, 100%, 55%, 0.5) 250deg,
+      transparent 300deg
+    );
+    animation: frame-sheen 8s linear infinite;
+    z-index: -1;
   }
 }
 
@@ -252,5 +341,26 @@
 
   .font-body {
     font-family: 'Inter', sans-serif;
+  }
+
+  .pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Accessibility: collapse decorative motion when the user opts out */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-scroll,
+  .float-animation,
+  .pulse-glow,
+  .aurora,
+  .aurora-delayed,
+  .animated-border::before,
+  .portrait-frame::before {
+    animation: none !important;
   }
 }
