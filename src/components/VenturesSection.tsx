@@ -100,7 +100,7 @@ const VenturesSection = () => {
             
             <div className="space-y-4">
               <div className="glass-card p-3 text-center">
-                <span className="text-2xl font-bold text-gradient-gold">58K+</span>
+                <span className="text-2xl font-bold text-gradient-gold">53K+</span>
                 <p className="text-xs text-muted-foreground">Followers</p>
               </div>
               <div className="glass-card p-3 text-center">

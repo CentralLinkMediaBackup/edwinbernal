@@ -1,0 +1,35 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1220"/>
+      <stop offset="100%" stop-color="#10203D"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4FA3FF"/>
+      <stop offset="55%" stop-color="#3D7FFF"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad)"/>
+
+  <circle cx="256" cy="256" r="200" fill="none" stroke="#1E3A5F" stroke-width="1.5" opacity="0.5"/>
+
+  <line x1="94" y1="256" x2="130" y2="256" stroke="#3D7FFF" stroke-width="2" opacity="0.55"/>
+  <line x1="382" y1="256" x2="418" y2="256" stroke="#FFD700" stroke-width="2" opacity="0.55"/>
+  <circle cx="94" cy="256" r="6" fill="#3D7FFF"/>
+  <circle cx="418" cy="256" r="6" fill="#FFD700"/>
+
+  <text x="256" y="318" font-family="Poppins" font-weight="700" font-size="228"
+        text-anchor="middle" fill="url(#textGrad)" filter="url(#glow)"
+        letter-spacing="-8">EB</text>
+
+  <rect x="176" y="352" width="160" height="8" rx="4" fill="url(#textGrad)" opacity="0.9"/>
+</svg>

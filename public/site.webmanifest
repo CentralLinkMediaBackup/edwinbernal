@@ -1,0 +1,21 @@
+{
+  "name": "Edwin Bernal — Founder & CEO, Central Link Media",
+  "short_name": "Edwin Bernal",
+  "description": "Portfolio of Edwin Bernal — Founder & CEO of Central Link Media, Project Manager at Prosperity Fire Protection.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0A1220",
+  "background_color": "#0A1220",
+  "display": "standalone",
+  "start_url": "/"
+}

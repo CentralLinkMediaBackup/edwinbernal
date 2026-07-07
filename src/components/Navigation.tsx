@@ -45,13 +45,20 @@ const Navigation = () => {
             isScrolled ? "shadow-lg" : ""
           }`}>
             {/* Logo */}
-            <a 
-              href="#" 
+            <a
+              href="#"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="font-display text-xl font-bold"
+              className="flex items-center gap-3 font-display text-xl font-bold"
             >
-              <span className="text-gradient-gold">E</span>
-              <span className="text-foreground">B</span>
+              <img
+                src="/eb-logo-full.svg"
+                alt="Edwin Bernal logo"
+                className="h-9 w-9 rounded-lg"
+              />
+              <span className="hidden sm:inline">
+                <span className="text-gradient-gold">Edwin</span>{" "}
+                <span className="text-foreground">Bernal</span>
+              </span>
             </a>
 
             {/* Desktop Nav */}

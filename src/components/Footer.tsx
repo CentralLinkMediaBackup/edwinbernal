@@ -126,9 +126,16 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border">
-            <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-              © 2025 Edwin Bernal. All rights reserved.
-            </p>
+            <div className="flex items-center gap-3 mb-4 md:mb-0">
+              <img
+                src="/eb-logo-full.svg"
+                alt="Edwin Bernal logo"
+                className="h-8 w-8 rounded-lg"
+              />
+              <p className="text-muted-foreground text-sm">
+                © 2025 Edwin Bernal. All rights reserved.
+              </p>
+            </div>
             
             <Button
               variant="ghost"

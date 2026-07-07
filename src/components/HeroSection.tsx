@@ -79,7 +79,7 @@ const HeroSection = () => {
             <br />
             <span className="text-primary">Founder, Central Link Media, LLC</span>
             <span className="text-muted-foreground mx-2">|</span>
-            <span className="text-secondary">50k+ Followers on Instagram</span>
+            <span className="text-secondary">53K+ Followers on Instagram</span>
           </motion.p>
 
           {/* Bio Blurb */}
