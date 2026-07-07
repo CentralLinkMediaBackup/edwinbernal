@@ -6,6 +6,7 @@ import TechTicker from "./TechTicker";
 import ParticleNetwork from "./motion/ParticleNetwork";
 import Magnetic from "./motion/Magnetic";
 import { EASE_OUT } from "./motion/Reveal";
+import { scrollToTarget } from "@/lib/scroll";
 import edwinProfile from "@/assets/edwin-profile.png";
 
 const HeroSection = () => {
@@ -144,7 +145,7 @@ const HeroSection = () => {
                   <Button
                     size="lg"
                     className="group w-full sm:w-auto bg-gradient-to-r from-primary to-electric-glow hover:opacity-90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl glow-blue"
-                    onClick={() => document.getElementById('ventures')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToTarget('#ventures')}
                   >
                     <Briefcase className="mr-2 h-5 w-5" />
                     View My Ventures
@@ -156,7 +157,7 @@ const HeroSection = () => {
                     size="lg"
                     variant="outline"
                     className="w-full sm:w-auto border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary font-semibold px-8 py-6 text-lg rounded-xl"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => scrollToTarget('#contact')}
                   >
                     <Mail className="mr-2 h-5 w-5" />
                     Contact Me

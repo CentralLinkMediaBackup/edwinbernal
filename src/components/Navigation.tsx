@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Magnetic from "./motion/Magnetic";
+import { scrollToTarget } from "@/lib/scroll";
 
 const navItems = [
   { label: "Ventures", href: "#ventures" },
@@ -49,8 +50,7 @@ const Navigation = () => {
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    scrollToTarget(href);
   };
 
   return (
@@ -70,7 +70,7 @@ const Navigation = () => {
             {/* Logo */}
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={(e) => { e.preventDefault(); scrollToTarget(0); }}
               className="flex items-center gap-3 font-display text-xl font-bold"
             >
               <img

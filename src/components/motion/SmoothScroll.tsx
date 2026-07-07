@@ -12,6 +12,8 @@ const SmoothScroll = ({ children }: { children: ReactNode }) => {
       smoothWheel: true,
     });
 
+    window.__lenis = lenis;
+
     let rafId: number;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -22,6 +24,7 @@ const SmoothScroll = ({ children }: { children: ReactNode }) => {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete window.__lenis;
     };
   }, []);
 

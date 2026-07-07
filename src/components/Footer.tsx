@@ -4,10 +4,11 @@ import ContactForm from "./ContactForm";
 import { Reveal, RevealGroup, RevealItem, SplitWords } from "./motion/Reveal";
 import SpotlightCard from "./motion/SpotlightCard";
 import Magnetic from "./motion/Magnetic";
+import { scrollToTarget } from "@/lib/scroll";
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTarget(0);
   };
 
   return (
