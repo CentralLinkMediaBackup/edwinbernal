@@ -42,6 +42,7 @@ const experiences: Experience[] = [
   },
   {
     title: "Project Transformation",
+    logo: "/logos/project-transformation.png",
     role: "Teacher (Lite)",
     period: "Jun 2020 - Aug 2023",
     description: "Designed and implemented customized lesson plans for students aged 5-12, focusing on literacy, leadership, and personal development. Provided mentorship and academic support to high school freshmen.",
