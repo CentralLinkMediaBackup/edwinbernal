@@ -84,7 +84,7 @@ const Navigation = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-7">
-            {navItems.map((item, i) => (
+            {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
@@ -95,7 +95,6 @@ const Navigation = () => {
                     : "text-muted-foreground hover:text-ink"
                 }`}
               >
-                <sup className="font-display text-[0.6rem] text-cobalt mr-0.5">{i + 1}</sup>
                 {item.label}
               </button>
             ))}
@@ -138,7 +137,7 @@ const Navigation = () => {
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } } }}
             >
-              {navItems.map((item, i) => (
+              {navItems.map((item) => (
                 <motion.button
                   key={item.label}
                   variants={{
@@ -146,9 +145,8 @@ const Navigation = () => {
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
                   }}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-left py-2 flex items-baseline gap-4"
+                  className="text-left py-2"
                 >
-                  <span className="font-display text-sm text-cobalt-soft">0{i + 1}</span>
                   <span className="font-display font-light text-4xl tracking-tight">{item.label}</span>
                 </motion.button>
               ))}

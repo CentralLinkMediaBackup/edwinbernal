@@ -9,7 +9,7 @@ const contactRows = [
   { label: "Personal Email", value: "EdwinBernal2026@gmail.com", href: "mailto:EdwinBernal2026@gmail.com" },
   { label: "Business Email", value: "e.bernal@centrallinkmedia.com", href: "mailto:e.bernal@centrallinkmedia.com" },
   { label: "Phone", value: "(945)-954-7416", href: "tel:+19459547416" },
-  { label: "Location", value: "Dallas, TX 75212", href: null },
+  { label: "Primarily Located At", value: "Dallas, TX 75212", href: null },
 ];
 
 const socials = [
@@ -19,7 +19,7 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer id="contact" className="relative bg-ink text-paper pt-24 md:pt-32 overflow-hidden">
+    <footer id="contact" className="relative bg-ink text-paper pt-16 md:pt-20 overflow-hidden">
       <div className="container px-6 relative z-10">
         {/* Header */}
         <Reveal className="mb-16 md:mb-20">
@@ -35,7 +35,7 @@ const Footer = () => {
               />
             </h2>
             <CircularText
-              text="AVAILABLE FOR OPPORTUNITIES — LET'S TALK — "
+              text="CONTACT ME — CONTACT ME — CONTACT ME — "
               className="text-paper/70 hidden lg:block flex-shrink-0"
               size={150}
             />
@@ -118,7 +118,7 @@ const Footer = () => {
               className="h-8 w-8 rounded-full border border-paper-dim"
             />
             <p className="text-paper/60 text-sm">
-              © 2025 Edwin Bernal. All rights reserved.
+              © 2026 Edwin Bernal. All rights reserved.
             </p>
           </div>
 

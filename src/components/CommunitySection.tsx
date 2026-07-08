@@ -8,7 +8,7 @@ const efforts = [
     hours: 960,
     suffix: "",
     description:
-      "Cared for toddlers in a church setting, providing a safe and nurturing environment for young children while supporting families in the community.",
+      "Cared for elementary students in a church setting, providing a safe and nurturing environment for young children while supporting families in the community.",
   },
   {
     name: "Proyecto Inmigrante",
@@ -28,7 +28,7 @@ const efforts = [
 
 const CommunitySection = () => {
   return (
-    <section id="community" className="py-24 md:py-32 relative">
+    <section id="community" className="py-14 md:py-20 relative">
       <div className="container px-6">
         <SectionHeader
           number="05"

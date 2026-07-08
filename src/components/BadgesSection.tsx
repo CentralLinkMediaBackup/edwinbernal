@@ -3,27 +3,42 @@ import { Reveal, RevealGroup, RevealItem, fadeScale } from "./motion/Reveal";
 import SectionHeader from "./SectionHeader";
 
 const badges = [
-  { title: "Mock Trial President", subtitle: "ETAMU" },
-  { title: "Model UN President", subtitle: "Leadership" },
-  { title: "Debate Team President", subtitle: "ETAMU" },
-  { title: "Moot Court President", subtitle: "ETAMU" },
-  { title: "College of Business Senator", subtitle: "Student Government" },
-  { title: "Pi Sigma Alpha Honor Society", subtitle: "Member & Leader" },
-  { title: "Sigma Chi Fraternity", subtitle: "ΣΧ Brother" },
-  { title: "ETAMU Lion Ambassador", subtitle: "Campus Representative" },
-  { title: "Future Leaders of America", subtitle: "Member" },
-  { title: "Project Transformation", subtitle: "Best Lite (3x Winner)" },
+  { title: "Mock Trial President", subtitle: "ETAMU", image: "/leadership/mock-trial.jpg" },
+  { title: "Model UN President", subtitle: "Leadership", image: "/leadership/model-un.jpg" },
+  { title: "Debate Team President", subtitle: "ETAMU", image: "/leadership/debate.jpg" },
+  { title: "Moot Court President", subtitle: "ETAMU", image: "/leadership/moot-court.jpg" },
+  { title: "College of Business Senator", subtitle: "Student Government", image: "/leadership/senator.jpg" },
+  { title: "Pi Sigma Alpha Honor Society", subtitle: "Member & Leader", image: "/leadership/pi-sigma-alpha.jpg" },
+  { title: "Sigma Chi Fraternity", subtitle: "ΣΧ Brother", image: "/leadership/sigma-chi.jpg" },
+  { title: "ETAMU Lion Ambassador", subtitle: "Campus Representative", image: "/leadership/lion-ambassador.jpg" },
+  { title: "The Eastern Edge", subtitle: "Founder & Editor in Chief — ETAMU Student Newspaper", image: "/leadership/eastern-edge.jpg" },
+  { title: "Project Transformation", subtitle: "Best Lite (3x Winner)", image: "/leadership/project-transformation.jpg" },
 ];
 
 const honorsAwards = [
-  { title: "Best Lite Award", subtitle: "3 Consecutive Years" },
-  { title: "Congressional Recognition", subtitle: "Presented by Jasmine Crockett (U.S. Representative)" },
-  { title: "ESUME Entrepreneur Scholarship", subtitle: "Scholarship Recipient" },
+  {
+    title: "Best Lite Award",
+    subtitle: "3 Consecutive Years",
+    description:
+      "Awarded as the top teacher of a class of 20 elementary students — teaching math, reading, and religion to kids in a low-income community each summer, May through September.",
+  },
+  {
+    title: "Congressional Recognition",
+    subtitle: "Presented by Jasmine Crockett (U.S. Representative)",
+    description:
+      "Personally selected by U.S. Representative Jasmine Crockett for the ESUME Entrepreneur Scholarship — presented alongside an official U.S. Congressional Recognition, signed by Rep. Crockett and the U.S. Congressional offices and bearing the White House stamp.",
+  },
+  {
+    title: "ESUME Entrepreneur Scholarship",
+    subtitle: "Scholarship Recipient",
+    description:
+      "Awarded on the basis of leadership, a 4.0 college GPA, and distinction as a promising young entrepreneur.",
+  },
 ];
 
 const BadgesSection = () => {
   return (
-    <section id="leadership" className="py-24 md:py-32 relative overflow-hidden">
+    <section id="leadership" className="py-14 md:py-20 relative overflow-hidden">
       <div className="container px-6">
         <SectionHeader
           number="03"
@@ -40,11 +55,16 @@ const BadgesSection = () => {
         >
           {badges.map((badge, index) => (
             <RevealItem key={index} variants={fadeScale} className="border-b border-r border-border">
-              <div className="card-invert border-0 h-full p-6 flex flex-col justify-between min-h-[180px] cursor-default">
-                <span className="font-display text-sm invert-dim text-muted-foreground">
-                  ({String(index + 1).padStart(2, "0")})
-                </span>
-                <div>
+              <div className="card-invert group border-0 h-full flex flex-col cursor-default">
+                <div className="overflow-hidden">
+                  <img
+                    src={badge.image}
+                    alt={badge.title}
+                    loading="lazy"
+                    className="h-32 w-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-end">
                   <h3 className="font-display font-normal text-lg leading-snug mb-1">
                     {badge.title}
                   </h3>
@@ -71,7 +91,8 @@ const BadgesSection = () => {
                   <h4 className="font-display font-light text-2xl md:text-3xl text-ink tracking-tight mb-2 group-hover:text-cobalt transition-colors duration-300">
                     {award.title}
                   </h4>
-                  <p className="text-muted-foreground">{award.subtitle}</p>
+                  <p className="text-ink font-medium mb-3">{award.subtitle}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{award.description}</p>
                 </div>
               </RevealItem>
             ))}
@@ -105,6 +126,13 @@ const BadgesSection = () => {
             <span className="eyebrow text-cobalt block mb-3">Publication</span>
             <p className="font-display-italic text-2xl md:text-3xl text-ink leading-snug max-w-3xl">
               "Poison or Cure? Comparison Among Students and its effect on Mental Health"
+            </p>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mt-4">
+              A study surveying roughly 15 high schools and more than 1,000 senior students on the
+              correlation between academic comparison and mental health — examining whether comparison
+              acts as a harmful pressure or a motivating force for academic and mental performance.
+              The findings are compiled in a 50-page publication now held in several Texas high schools
+              and in Texas A&amp;M University libraries.
             </p>
           </div>
           <div className="rule" />

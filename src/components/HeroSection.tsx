@@ -46,7 +46,7 @@ const HeroSection = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-cobalt inline-block" />
             First-Generation Student &amp; Entrepreneur
           </span>
-          <span className="eyebrow text-muted-foreground hidden md:block">Dallas, TX — Portfolio</span>
+          <span className="eyebrow text-muted-foreground hidden md:block">Texas — Portfolio</span>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
@@ -80,9 +80,9 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: D + 0.5, ease: EASE_OUT }}
               className="mt-6 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              A&amp;M Alumni&ensp;|&ensp;Project Manager, Prosperity Fire Protection, LLC
+              A&amp;M Alumni&ensp;|&ensp;<span className="text-ink font-medium">Founder, Central Link Media, LLC</span>
               <br />
-              <span className="text-ink font-medium">Founder, Central Link Media, LLC</span>
+              Project Manager, Prosperity Fire Protection, LLC
               <span className="mx-2 text-border">|</span>
               <span className="text-cobalt font-medium">53K+ Followers on Instagram</span>
             </motion.p>
@@ -123,7 +123,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: D + 0.4, ease: EASE_OUT }}
             className="lg:col-span-4 relative max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:justify-self-end"
           >
-            <div className="portrait-editorial relative border border-ink bg-card">
+            <div className="relative border border-ink bg-card">
               <img
                 src={edwinProfile}
                 alt="Edwin Bernal"
@@ -150,17 +150,41 @@ const HeroSection = () => {
           className="rule mt-14 pt-8 grid grid-cols-1 md:grid-cols-12 gap-4 pb-16"
         >
           <span className="eyebrow text-muted-foreground md:col-span-3">About</span>
-          <p className="md:col-span-9 max-w-3xl text-lg md:text-xl leading-relaxed text-ink/80">
-            I am a driven leader, strategist, and entrepreneur currently pursuing a double major in{" "}
-            <em className="font-display-italic text-cobalt not-italic">Finance</em> and{" "}
-            <em className="font-display-italic text-cobalt not-italic">Political Science</em> with minors in{" "}
-            <em className="font-display-italic text-cobalt not-italic">Legal Studies</em> and{" "}
-            <em className="font-display-italic text-cobalt not-italic">Elementary Education</em>. A graduate of the{" "}
-            <em className="font-display-italic not-italic">Judge Barefoot Sanders Law Magnet</em>{" "}
-            (ranked #85 nationwide), my academic foundation in business, law, and governance strengthens
-            my work as a founder and future{" "}
-            <em className="font-display-italic text-cobalt not-italic">corporate attorney</em>.
-          </p>
+          <div className="md:col-span-9 max-w-3xl text-base md:text-lg leading-relaxed text-ink/80 space-y-4">
+            <p>
+              I am a driven leader, strategic thinker, and entrepreneur with a passion for creating
+              meaningful impact through business, innovation, and leadership. I am currently pursuing a
+              double major in <em className="font-display-italic text-cobalt not-italic">Finance</em> and{" "}
+              <em className="font-display-italic text-cobalt not-italic">Political Science</em>,
+              complemented by minors in <em className="font-display-italic text-cobalt not-italic">Legal Studies</em> and{" "}
+              <em className="font-display-italic text-cobalt not-italic">Elementary Education</em> —
+              a multidisciplinary perspective on business strategy, governance, and organizational
+              success. My academic journey reflects a commitment to understanding not only how
+              businesses operate, but how legal and financial systems shape industries and communities.
+            </p>
+            <p>
+              As a graduate of the{" "}
+              <em className="font-display-italic not-italic">Judge Barefoot Sanders Law Magnet</em> —
+              recognized among the nation's top high schools and ranked{" "}
+              <em className="font-display-italic text-cobalt not-italic">#84 nationally</em> — I built a
+              strong foundation in legal studies, critical thinking, and civic leadership that continues
+              to shape my approach to decision-making, problem-solving, and strategic leadership.
+            </p>
+            <p>
+              Today, I apply that foundation as the{" "}
+              <em className="font-display-italic text-cobalt not-italic">Founder &amp; CEO of Central Link Media</em>,
+              leading initiatives in digital marketing, branding, website development, and business
+              growth strategies for organizations across a variety of industries. My long-term aspiration
+              is to build Central Link Media into{" "}
+              <em className="font-display-italic text-cobalt not-italic">one of the premier marketing agencies in Texas</em> —
+              recognized for innovative solutions, measurable results, and exceptional client service.
+              As both founder and chief executive, I am committed to cultivating a company that sets the
+              standard for excellence, empowers businesses to achieve sustainable growth, and creates a
+              lasting impact on the communities and clients we serve. Through continuous learning,
+              disciplined leadership, and an unwavering commitment to quality, I aim to establish a
+              legacy of <em className="font-display-italic not-italic">innovation, integrity, and entrepreneurial success</em>.
+            </p>
+          </div>
         </motion.div>
       </div>
 

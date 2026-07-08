@@ -3,27 +3,39 @@ import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
 import { Reveal, EASE_OUT } from "./motion/Reveal";
 import SectionHeader from "./SectionHeader";
 
-const experiences = [
+interface Experience {
+  title: string;
+  role: string;
+  period: string;
+  description: string;
+  logo?: string;
+}
+
+const experiences: Experience[] = [
   {
     title: "Microsoft",
+    logo: "/logos/microsoft.png",
     role: "Software QA Intern",
     period: "Feb - May 2025",
     description: "Worked on testing and debugging code to ensure functionality, performance, and reliability across multiple projects. Collaborated with developers to identify issues, revise code, and improve overall software quality. Gained hands-on experience with version control, test automation, and agile development practices.",
   },
   {
     title: "Cafe Brazil, LLC",
+    logo: "/logos/cafe-brazil.png",
     role: "Cafe Server",
     period: "May - June 2025",
     description: "Delivered exceptional customer service in a fast-paced, high-volume restaurant environment. Took and processed orders efficiently, collaborated with kitchen staff to enhance dining experience.",
   },
   {
     title: "East Texas A&M University",
+    logo: "/logos/etamu.png",
     role: "Lion Ambassador",
     period: "Aug 2024 - May 2025",
     description: "Served as a student leader representing the university at various events. Provided campus tours, engaged with prospective students, and promoted the university's values and mission.",
   },
   {
     title: "Proyecto Inmigrante",
+    logo: "/logos/proyecto-inmigrante.png",
     role: "Assistant Consultant",
     period: "Feb 2021 - Apr 2023",
     description: "Provided legal assistance to clients seeking U.S. citizenship, specializing in N-600 applications and immigration documentation. Managed 10-20 client cases daily, trained and mentored individuals on the citizenship application process.",
@@ -36,12 +48,14 @@ const experiences = [
   },
   {
     title: "Raising Cane's Chicken Fingers",
+    logo: "/logos/raising-canes.png",
     role: "Cashier / Customer Service",
     period: "May - Aug 2024",
     description: "Delivered exceptional customer service in a high-volume, fast-paced environment. Managed cash handling and order fulfillment while maintaining efficiency and accuracy.",
   },
   {
     title: "Levines Dept Store",
+    logo: "/logos/levines.png",
     role: "Cashier",
     period: "Jun - Aug 2024",
     description: "Managed high-volume transactions while delivering outstanding customer service. Handled large crowds and seasonal rushes, demonstrating adaptability under pressure.",
@@ -59,7 +73,7 @@ const TimelineSection = () => {
   const lineScale = useSpring(scrollYProgress, { stiffness: 90, damping: 25 });
 
   return (
-    <section id="experience" className="py-24 md:py-32 relative bg-muted/40">
+    <section id="experience" className="py-14 md:py-20 relative bg-muted/40">
       <div className="container px-6">
         <SectionHeader
           number="02"
@@ -96,8 +110,16 @@ const TimelineSection = () => {
               />
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-2">
-                <div className="md:col-span-3">
+                <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
                   <span className="eyebrow text-cobalt">{exp.period}</span>
+                  {exp.logo && (
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.title} logo`}
+                      loading="lazy"
+                      className="h-12 w-12 object-contain flex-shrink-0"
+                    />
+                  )}
                 </div>
                 <div className="md:col-span-9">
                   <h3 className="font-display font-light text-3xl md:text-4xl text-ink tracking-tight group-hover:translate-x-2 transition-transform duration-500">

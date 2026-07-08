@@ -19,7 +19,7 @@ const SectionHeader = ({
   description?: string;
   dark?: boolean;
 }) => (
-  <Reveal className="mb-16 md:mb-20">
+  <Reveal className="mb-10 md:mb-12">
     <div className={`${dark ? "rule-ink border-paper-dim" : "rule"} pt-6 flex items-baseline justify-between gap-4 mb-8`}>
       <span className={`eyebrow ${dark ? "text-paper/60" : "text-muted-foreground"}`}>{eyebrow}</span>
       <span className={`font-display text-sm ${dark ? "text-paper/60" : "text-muted-foreground"}`}>({number})</span>

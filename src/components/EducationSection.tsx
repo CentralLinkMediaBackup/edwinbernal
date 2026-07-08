@@ -5,11 +5,22 @@ import SectionHeader from "./SectionHeader";
 
 const certifications = [
   "Investment Risk Management",
-  "Bartender/Waiter Alcohol Permit",
-  "CPR/AED/First Aid",
-  "Microsoft Excel",
-  "Food Handling",
   "Business Management",
+  "Business Finance",
+  "Marketing",
+  "Microsoft Excel",
+  "Microsoft Word",
+  "Google Suite",
+  "Java",
+  "HTML",
+  "CSS",
+  "C++",
+  "WordPress",
+  "GoDaddy Web Development",
+  "Wix Web Development",
+  "CPR/AED/First Aid",
+  "Bartender/Waiter Alcohol Permit",
+  "Food Handling",
 ];
 
 const LanguageBar = ({ language, level }: { language: string; level: string }) => {
@@ -36,7 +47,7 @@ const LanguageBar = ({ language, level }: { language: string; level: string }) =
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-24 md:py-32 relative bg-muted/40">
+    <section id="education" className="py-14 md:py-20 relative bg-muted/40">
       <div className="container px-6">
         <SectionHeader
           number="04"
@@ -68,7 +79,7 @@ const EducationSection = () => {
 
           <RevealItem className="border-b border-r border-border">
             <div className="p-8 h-full flex flex-col">
-              <span className="eyebrow text-cobalt mb-6 block">Aug 2025 — May 2027 (Online)</span>
+              <span className="eyebrow text-cobalt mb-6 block">Aug 2025 — May 2028 (Online)</span>
               <h3 className="font-display font-light text-3xl text-ink tracking-tight mb-6">
                 University of North Texas
               </h3>
@@ -93,7 +104,7 @@ const EducationSection = () => {
               </h3>
               <div className="mt-auto rule pt-4 flex items-end gap-4">
                 <CountUp
-                  value={85}
+                  value={84}
                   prefix="#"
                   className="font-display font-light text-6xl md:text-7xl text-cobalt leading-none"
                 />
