@@ -59,10 +59,10 @@ const Navigation = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: reduceMotion ? 0 : 1.7, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b bg-paper border-border py-3 ${
           isScrolled
-            ? "bg-paper/90 backdrop-blur-md border-border py-3"
-            : "bg-paper/90 backdrop-blur-md border-border py-4 md:bg-transparent md:border-transparent md:backdrop-blur-none md:py-5"
+            ? "md:bg-paper/90 md:backdrop-blur-md"
+            : "md:bg-transparent md:border-transparent md:py-5"
         }`}
       >
         <div className="container px-6 flex items-center justify-between">
