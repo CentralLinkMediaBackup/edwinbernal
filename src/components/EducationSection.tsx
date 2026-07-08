@@ -1,209 +1,150 @@
-import { motion } from "framer-motion";
-import { GraduationCap, Award, Languages, BookOpen, Scale, Shield, Heart, Briefcase } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Reveal, RevealGroup, RevealItem, EASE_OUT } from "./motion/Reveal";
+import CountUp from "./motion/CountUp";
+import SectionHeader from "./SectionHeader";
 
 const certifications = [
-  { name: "Investment Risk Management", color: "primary" },
-  { name: "Bartender/Waiter Alcohol Permit", color: "secondary" },
-  { name: "CPR/AED/First Aid", color: "primary" },
-  { name: "Microsoft Excel", color: "secondary" },
-  { name: "Food Handling", color: "primary" },
-  { name: "Business Management", color: "secondary" },
+  "Investment Risk Management",
+  "Business Management",
+  "Business Finance",
+  "Marketing",
+  "Microsoft Excel",
+  "Microsoft Word",
+  "Google Suite",
+  "Java",
+  "HTML",
+  "CSS",
+  "C++",
+  "WordPress",
+  "GoDaddy Web Development",
+  "Wix Web Development",
+  "CPR/AED/First Aid",
+  "Bartender/Waiter Alcohol Permit",
+  "Food Handling",
 ];
+
+const LanguageBar = ({ language, level }: { language: string; level: string }) => {
+  const reduceMotion = useReducedMotion();
+  return (
+    <div>
+      <div className="flex justify-between items-baseline mb-2">
+        <span className="font-display font-light text-2xl text-ink">{language}</span>
+        <span className="eyebrow text-muted-foreground">{level}</span>
+      </div>
+      <div className="h-px bg-border relative overflow-hidden">
+        <motion.div
+          initial={reduceMotion ? undefined : { width: "0%" }}
+          whileInView={{ width: "100%" }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 1.1, ease: EASE_OUT }}
+          className="absolute inset-y-0 left-0 bg-cobalt"
+          style={{ height: "3px", top: "-1px" }}
+        />
+      </div>
+    </div>
+  );
+};
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-24 relative">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      
-      <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="badge-blue mb-4 inline-block">Academic Journey</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            Education & <span className="text-gradient-blue">Certifications</span>
-          </h2>
-        </motion.div>
+    <section id="education" className="py-14 md:py-20 relative bg-muted/40">
+      <div className="container px-6">
+        <SectionHeader
+          number="04"
+          eyebrow="Academic Journey"
+          title="Education & Certifications"
+          accentWord="Certifications"
+        />
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* East Texas A&M University */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="glass-card-hover p-8"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10 glow-blue">
-                <GraduationCap className="h-8 w-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-bold text-foreground">
-                  East Texas A&M University
-                </h3>
-                <p className="text-primary text-sm">Aug 2024 - May 2025</p>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <BookOpen className="h-5 w-5 text-secondary mt-0.5" />
-                <div>
-                  <p className="text-foreground font-medium">Double Major</p>
-                  <p className="text-muted-foreground text-sm">Finance & Political Science (BBA)</p>
+        {/* Schools */}
+        <RevealGroup className="grid grid-cols-1 lg:grid-cols-3 border-t border-l border-border" stagger={0.1}>
+          <RevealItem className="border-b border-r border-border">
+            <div className="p-8 h-full flex flex-col">
+              <span className="eyebrow text-cobalt mb-6 block">Aug 2024 — May 2025</span>
+              <h3 className="font-display font-light text-3xl text-ink tracking-tight mb-6">
+                East Texas A&amp;M University
+              </h3>
+              <div className="mt-auto space-y-4">
+                <div className="rule pt-4">
+                  <p className="eyebrow text-muted-foreground mb-1">Double Major</p>
+                  <p className="text-ink">Finance &amp; Political Science (BBA)</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Scale className="h-5 w-5 text-primary mt-0.5" />
-                <div>
-                  <p className="text-foreground font-medium">Minor</p>
-                  <p className="text-muted-foreground text-sm">Legal Studies & Elementary Education</p>
+                <div className="rule pt-4">
+                  <p className="eyebrow text-muted-foreground mb-1">Minor</p>
+                  <p className="text-ink">Legal Studies &amp; Elementary Education</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </RevealItem>
 
-          {/* University of North Texas */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass-card-hover p-8"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-secondary/10 glow-gold">
-                <GraduationCap className="h-8 w-8 text-secondary" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-bold text-foreground">
-                  University of North Texas
-                </h3>
-                <p className="text-secondary text-sm">Aug 2025 - May 2027 (Online)</p>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <BookOpen className="h-5 w-5 text-primary mt-0.5" />
-                <div>
-                  <p className="text-foreground font-medium">Major</p>
-                  <p className="text-muted-foreground text-sm">Finance & Political Science</p>
+          <RevealItem className="border-b border-r border-border">
+            <div className="p-8 h-full flex flex-col">
+              <span className="eyebrow text-cobalt mb-6 block">Aug 2025 — May 2028 (Online)</span>
+              <h3 className="font-display font-light text-3xl text-ink tracking-tight mb-6">
+                University of North Texas
+              </h3>
+              <div className="mt-auto space-y-4">
+                <div className="rule pt-4">
+                  <p className="eyebrow text-muted-foreground mb-1">Major</p>
+                  <p className="text-ink">Finance &amp; Political Science</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Briefcase className="h-5 w-5 text-secondary mt-0.5" />
-                <div>
-                  <p className="text-foreground font-medium">Minor</p>
-                  <p className="text-muted-foreground text-sm">Legal Studies & Elementary Education</p>
+                <div className="rule pt-4">
+                  <p className="eyebrow text-muted-foreground mb-1">Minor</p>
+                  <p className="text-ink">Legal Studies &amp; Elementary Education</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </RevealItem>
 
-          {/* High School */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card-hover p-8"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-secondary/10 glow-gold">
-                <Award className="h-8 w-8 text-secondary" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-bold text-foreground">
-                  Judge Barefoot Sanders Law Magnet
-                </h3>
-                <p className="text-secondary text-sm">Dallas, TX • 2021 - 2024</p>
-              </div>
-            </div>
-            
-            <div className="glass-card p-4">
-              <div className="flex items-center gap-3">
-                <div className="text-3xl font-bold text-gradient-gold">#85</div>
-                <div>
-                  <p className="text-foreground font-medium">Nationwide Ranking</p>
+          <RevealItem className="border-b border-r border-border">
+            <div className="p-8 h-full flex flex-col">
+              <span className="eyebrow text-cobalt mb-6 block">Dallas, TX • 2021 — 2024</span>
+              <h3 className="font-display font-light text-3xl text-ink tracking-tight mb-6">
+                Judge Barefoot Sanders Law Magnet
+              </h3>
+              <div className="mt-auto rule pt-4 flex items-end gap-4">
+                <CountUp
+                  value={84}
+                  prefix="#"
+                  className="font-display font-light text-6xl md:text-7xl text-cobalt leading-none"
+                />
+                <div className="pb-1">
+                  <p className="text-ink font-medium">Nationwide Ranking</p>
                   <p className="text-muted-foreground text-sm">Selective Law Magnet Program</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </RevealItem>
+        </RevealGroup>
 
-          {/* Certifications */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="glass-card-hover p-8 lg:col-span-2"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-primary/10">
-                <Shield className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-foreground">
-                Certifications
-              </h3>
+        {/* Certifications + Languages */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-20">
+          <Reveal delay={0.05}>
+            <div className="rule pt-6 mb-8 flex items-baseline justify-between">
+              <span className="eyebrow text-muted-foreground">Certifications</span>
+              <span className="font-display text-sm text-muted-foreground">(04.1)</span>
             </div>
-            
-            <div className="flex flex-wrap gap-3">
+            <RevealGroup className="flex flex-wrap gap-3" stagger={0.06}>
               {certifications.map((cert, index) => (
-                <span 
-                  key={index}
-                  className={cert.color === "primary" ? "badge-blue" : "badge-gold"}
-                >
-                  {cert.name}
-                </span>
+                <RevealItem key={index}>
+                  <span className="btn-editorial px-5 py-2.5 text-sm cursor-default">
+                    {cert}
+                  </span>
+                </RevealItem>
               ))}
-            </div>
-          </motion.div>
+            </RevealGroup>
+          </Reveal>
 
-          {/* Languages */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="glass-card-hover p-8"
-          >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-secondary/10">
-                <Languages className="h-8 w-8 text-secondary" />
-              </div>
-              <h3 className="font-display text-xl font-bold text-foreground">
-                Languages
-              </h3>
+          <Reveal delay={0.1}>
+            <div className="rule pt-6 mb-8 flex items-baseline justify-between">
+              <span className="eyebrow text-muted-foreground">Languages</span>
+              <span className="font-display text-sm text-muted-foreground">(04.2)</span>
             </div>
-            
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-foreground font-medium">English</span>
-                  <span className="text-secondary text-sm">Native / Bilingual</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full w-full bg-gradient-to-r from-primary to-secondary rounded-full" />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between mb-1">
-                  <span className="text-foreground font-medium">Spanish</span>
-                  <span className="text-secondary text-sm">Native / Bilingual</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full w-full bg-gradient-to-r from-primary to-secondary rounded-full" />
-                </div>
-              </div>
+            <div className="space-y-8">
+              <LanguageBar language="English" level="Native / Bilingual" />
+              <LanguageBar language="Spanish" level="Native / Bilingual" />
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

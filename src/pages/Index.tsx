@@ -6,17 +6,23 @@ import BadgesSection from "@/components/BadgesSection";
 import EducationSection from "@/components/EducationSection";
 import CommunitySection from "@/components/CommunitySection";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/motion/Preloader";
+import Cursor from "@/components/motion/Cursor";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background grain">
+      <Preloader />
+      <Cursor />
       <Navigation />
-      <HeroSection />
-      <VenturesSection />
-      <TimelineSection />
-      <BadgesSection />
-      <EducationSection />
-      <CommunitySection />
+      <main>
+        <HeroSection />
+        <VenturesSection />
+        <TimelineSection />
+        <BadgesSection />
+        <EducationSection />
+        <CommunitySection />
+      </main>
       <Footer />
     </div>
   );

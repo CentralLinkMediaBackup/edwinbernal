@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Archivo', 'sans-serif'],
+        display: ['Fraunces', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,17 +61,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        navy: {
-          deep: "hsl(var(--navy-deep))",
-          light: "hsl(var(--navy-light))",
-        },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          muted: "hsl(var(--gold-muted))",
-        },
-        electric: {
-          DEFAULT: "hsl(var(--electric-blue))",
-          glow: "hsl(var(--electric-blue-glow))",
+        ink: "hsl(var(--ink))",
+        paper: "hsl(var(--paper))",
+        cobalt: {
+          DEFAULT: "hsl(var(--cobalt))",
+          deep: "hsl(var(--cobalt-deep))",
         },
       },
       borderRadius: {

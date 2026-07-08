@@ -1,146 +1,135 @@
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Instagram, ArrowUp, Briefcase } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import ContactForm from "./ContactForm";
+import { Reveal, RevealGroup, RevealItem, SplitWords } from "./motion/Reveal";
+import Magnetic from "./motion/Magnetic";
+import CircularText from "./motion/CircularText";
+import { scrollToTarget } from "@/lib/scroll";
+
+const contactRows = [
+  { label: "Personal Email", value: "EdwinBernal2026@gmail.com", href: "mailto:EdwinBernal2026@gmail.com" },
+  { label: "Business Email", value: "e.bernal@centrallinkmedia.com", href: "mailto:e.bernal@centrallinkmedia.com" },
+  { label: "Phone", value: "(945)-954-7416", href: "tel:+19459547416" },
+  { label: "Primarily Located At", value: "Dallas, TX 75212", href: null },
+];
+
+const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/edwinbernalz" },
+  { label: "Instagram", href: "https://www.instagram.com/edwinbernal.tx/" },
+];
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer id="contact" className="relative py-20 border-t border-border">
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[150px] -translate-x-1/2" />
-      
-      <div className="container relative z-10 px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Let's <span className="text-gradient-blue">Connect</span>
+    <footer id="contact" className="relative bg-ink text-paper pt-16 md:pt-20 overflow-hidden">
+      <div className="container px-6 relative z-10">
+        {/* Header */}
+        <Reveal className="mb-16 md:mb-20">
+          <div className="rule border-paper-dim pt-6 flex items-baseline justify-between mb-8">
+            <span className="eyebrow text-paper/60">Get in Touch</span>
+            <span className="font-display text-sm text-paper/60">(06)</span>
+          </div>
+          <div className="flex items-end justify-between gap-8">
+            <h2 className="font-display font-light tracking-tight leading-[0.95] text-5xl md:text-7xl lg:text-8xl">
+              <SplitWords
+                text="Let's Connect"
+                wordClassName={(word) => (word === "Connect" ? "font-display-italic text-cobalt-soft" : undefined)}
+              />
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Ready to discuss opportunities or collaborations? Get in touch.
-            </p>
+            <CircularText
+              text="CONTACT ME — CONTACT ME — CONTACT ME — "
+              className="text-paper/70 hidden lg:block flex-shrink-0"
+              size={150}
+            />
           </div>
+          <p className="mt-6 text-paper/70 text-lg max-w-xl">
+            Ready to discuss opportunities or collaborations? Get in touch.
+          </p>
+        </Reveal>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 pb-20">
           {/* Contact Form */}
-          <div className="mb-12">
+          <Reveal delay={0.1}>
             <ContactForm />
+          </Reveal>
+
+          {/* Contact details */}
+          <div>
+            <RevealGroup stagger={0.08}>
+              {contactRows.map((row) => (
+                <RevealItem key={row.label}>
+                  {row.href ? (
+                    <a
+                      href={row.href}
+                      className="rule border-paper-dim group flex items-center justify-between gap-4 py-6"
+                    >
+                      <div>
+                        <p className="eyebrow text-paper/50 mb-1">{row.label}</p>
+                        <p className="font-display font-light text-xl md:text-2xl tracking-tight group-hover:text-cobalt-soft transition-colors duration-300 break-all">
+                          {row.value}
+                        </p>
+                      </div>
+                      <ArrowUpRight className="h-6 w-6 text-paper/40 flex-shrink-0 group-hover:text-cobalt-soft group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                    </a>
+                  ) : (
+                    <div className="rule border-paper-dim py-6">
+                      <p className="eyebrow text-paper/50 mb-1">{row.label}</p>
+                      <p className="font-display font-light text-xl md:text-2xl tracking-tight">
+                        {row.value}
+                      </p>
+                    </div>
+                  )}
+                </RevealItem>
+              ))}
+            </RevealGroup>
+
+            {/* Socials */}
+            <Reveal className="mt-10 flex gap-4" delay={0.2}>
+              {socials.map((social) => (
+                <Magnetic key={social.label} strength={0.3}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-editorial-paper px-6 py-3 text-sm"
+                  >
+                    {social.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Magnetic>
+              ))}
+            </Reveal>
           </div>
+        </div>
+      </div>
 
-          {/* Contact Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <motion.a
-              href="mailto:EdwinBernal2026@gmail.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Mail className="h-6 w-6 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Personal Email</p>
-              <p className="text-foreground font-medium text-xs">EdwinBernal2026@gmail.com</p>
-            </motion.a>
+      {/* Giant watermark name */}
+      <div className="relative select-none pointer-events-none" aria-hidden="true">
+        <p className="text-stroke-paper font-display font-light text-center whitespace-nowrap leading-none text-[14vw] opacity-30 translate-y-[12%]">
+          Edwin Bernal
+        </p>
+      </div>
 
-            <motion.a
-              href="mailto:e.bernal@centrallinkmedia.com"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
-                <Briefcase className="h-6 w-6 text-secondary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Business Email</p>
-              <p className="text-foreground font-medium text-xs">e.bernal@centrallinkmedia.com</p>
-            </motion.a>
-
-            <motion.a
-              href="tel:+19459547416"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="glass-card-hover p-6 text-center group"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Phone className="h-6 w-6 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Phone</p>
-              <p className="text-foreground font-medium">(945)-954-7416</p>
-            </motion.a>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.25 }}
-              className="glass-card p-6 text-center"
-            >
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary/10 flex items-center justify-center">
-                <MapPin className="h-6 w-6 text-secondary" />
-              </div>
-              <p className="text-sm text-muted-foreground mb-1">Location</p>
-              <p className="text-foreground font-medium text-sm">Dallas, TX 75212</p>
-            </motion.div>
-          </div>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="flex justify-center gap-4 mb-12"
-          >
-            <a
-              href="https://www.linkedin.com/in/edwinbernalz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-primary/10 transition-colors group"
-            >
-              <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a
-              href="https://www.instagram.com/edwinbernal.tx/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-xl glass-card flex items-center justify-center hover:bg-secondary/10 transition-colors group"
-            >
-              <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-secondary transition-colors" />
-            </a>
-          </motion.div>
-
-          {/* Bottom Bar */}
-          <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border">
-            <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-              © 2025 Edwin Bernal. All rights reserved.
+      {/* Bottom Bar */}
+      <div className="relative z-10 border-t border-paper-dim">
+        <div className="container px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src="/eb-logo-full.svg"
+              alt="Edwin Bernal logo"
+              className="h-8 w-8 rounded-full border border-paper-dim"
+            />
+            <p className="text-paper/60 text-sm">
+              © 2026 Edwin Bernal. All rights reserved.
             </p>
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={scrollToTop}
-              className="text-muted-foreground hover:text-primary"
-            >
-              Back to top
-              <ArrowUp className="ml-2 h-4 w-4" />
-            </Button>
           </div>
-        </motion.div>
+
+          <button
+            onClick={() => scrollToTarget(0)}
+            className="link-slide text-paper/60 hover:text-paper text-sm flex items-center gap-2 transition-colors"
+          >
+            Back to top
+            <ArrowUp className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </footer>
   );
