@@ -71,7 +71,7 @@ const ventures: Venture[] = [
     logo: "/logos/sterling-social.png",
     description:
       "Dallas-based digital solutions company helping small businesses grow their online presence with affordable, high-quality website design and digital branding services. I ultimately sold my shares in the company when my co-owners shifted their focus toward larger clients and began stepping away from the small businesses that had originally placed their trust in us — a direction I wasn't willing to take.",
-    stats: [{ value: 47, suffix: "K", label: "Revenue in 8 Months" }],
+    stats: [{ value: 47, prefix: "$", suffix: "K", label: "Revenue in 8 Months" }],
   },
 ];
 
