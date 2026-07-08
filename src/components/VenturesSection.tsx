@@ -92,7 +92,7 @@ const VenturesSection = () => {
             <Reveal key={venture.index} delay={i * 0.05}>
               <article className="row-hover rule group grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-6 py-10 md:py-14 px-2 md:px-4 -mx-2 md:-mx-4">
                 {/* Index + period + logo */}
-                <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start justify-between gap-4">
+                <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-stretch justify-between lg:justify-start gap-4">
                   <div>
                     <span className="font-display font-light text-2xl md:text-3xl text-ink block">
                       ({venture.index})
@@ -101,12 +101,14 @@ const VenturesSection = () => {
                       {venture.period}
                     </span>
                   </div>
-                  <img
-                    src={venture.logo}
-                    alt={`${venture.name} logo`}
-                    loading="lazy"
-                    className="h-14 w-14 md:h-16 md:w-16 object-contain flex-shrink-0 lg:mt-4"
-                  />
+                  <div className="lg:flex-1 flex items-center justify-center lg:py-6">
+                    <img
+                      src={venture.logo}
+                      alt={`${venture.name} logo`}
+                      loading="lazy"
+                      className="h-14 w-14 lg:h-28 lg:w-28 object-contain flex-shrink-0"
+                    />
+                  </div>
                 </div>
 
                 {/* Name + role */}

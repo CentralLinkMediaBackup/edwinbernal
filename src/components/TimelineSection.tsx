@@ -111,14 +111,14 @@ const TimelineSection = () => {
               />
 
               <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-2">
-                <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4 md:gap-3">
+                <div className="md:col-span-3 flex md:flex-col items-center md:items-stretch gap-4 md:gap-5">
                   <span className="eyebrow text-cobalt">{exp.period}</span>
                   {exp.logo && (
                     <img
                       src={exp.logo}
                       alt={`${exp.title} logo`}
                       loading="lazy"
-                      className="h-12 w-12 object-contain flex-shrink-0"
+                      className="h-12 w-12 md:h-24 md:w-24 object-contain flex-shrink-0 md:self-center"
                     />
                   )}
                 </div>
